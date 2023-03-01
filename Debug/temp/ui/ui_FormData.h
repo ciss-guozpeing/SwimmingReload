@@ -40,30 +40,30 @@ public:
     QComboBox *comboBox;
     QFormLayout *formLayout_3;
     QLabel *label_4;
-    QComboBox *comboBox_3;
+    QComboBox *level;
     QFormLayout *formLayout_2;
     QLabel *label_3;
     QDoubleSpinBox *doubleSpinBox;
     QFormLayout *formLayout_4;
     QLabel *label_5;
-    QComboBox *comboBox_4;
+    QComboBox *team;
     QGridLayout *gridLayout_2;
     QSpacerItem *horizontalSpacer;
     QFormLayout *formLayout_5;
     QLabel *label_6;
-    QComboBox *comboBox_5;
+    QComboBox *stroke;
     QFormLayout *formLayout_7;
     QLabel *label_8;
-    QComboBox *comboBox_7;
+    QComboBox *stage;
     QFormLayout *formLayout_8;
     QLabel *label_9;
-    QComboBox *comboBox_8;
+    QComboBox *distance;
     QFormLayout *formLayout_10;
     QLabel *label_7;
-    QComboBox *comboBox_6;
+    QComboBox *strokeItem;
     QFormLayout *formLayout_9;
     QLabel *label_10;
-    QComboBox *comboBox_9;
+    QComboBox *env;
     QSpacerItem *horizontalSpacer_2;
     QVBoxLayout *verticalLayout;
     QSpacerItem *verticalSpacer;
@@ -120,6 +120,8 @@ public:
 
         comboBox = new QComboBox(groupBox);
         comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
 
         formLayout->setWidget(0, QFormLayout::FieldRole, comboBox);
@@ -134,11 +136,11 @@ public:
 
         formLayout_3->setWidget(0, QFormLayout::LabelRole, label_4);
 
-        comboBox_3 = new QComboBox(groupBox);
-        comboBox_3->addItem(QString());
-        comboBox_3->setObjectName(QString::fromUtf8("comboBox_3"));
+        level = new QComboBox(groupBox);
+        level->addItem(QString());
+        level->setObjectName(QString::fromUtf8("level"));
 
-        formLayout_3->setWidget(0, QFormLayout::FieldRole, comboBox_3);
+        formLayout_3->setWidget(0, QFormLayout::FieldRole, level);
 
 
         gridLayout->addLayout(formLayout_3, 0, 1, 1, 1);
@@ -165,11 +167,11 @@ public:
 
         formLayout_4->setWidget(0, QFormLayout::LabelRole, label_5);
 
-        comboBox_4 = new QComboBox(groupBox);
-        comboBox_4->addItem(QString());
-        comboBox_4->setObjectName(QString::fromUtf8("comboBox_4"));
+        team = new QComboBox(groupBox);
+        team->addItem(QString());
+        team->setObjectName(QString::fromUtf8("team"));
 
-        formLayout_4->setWidget(0, QFormLayout::FieldRole, comboBox_4);
+        formLayout_4->setWidget(0, QFormLayout::FieldRole, team);
 
 
         gridLayout->addLayout(formLayout_4, 1, 1, 1, 1);
@@ -190,11 +192,11 @@ public:
 
         formLayout_5->setWidget(0, QFormLayout::LabelRole, label_6);
 
-        comboBox_5 = new QComboBox(groupBox);
-        comboBox_5->addItem(QString());
-        comboBox_5->setObjectName(QString::fromUtf8("comboBox_5"));
+        stroke = new QComboBox(groupBox);
+        stroke->addItem(QString());
+        stroke->setObjectName(QString::fromUtf8("stroke"));
 
-        formLayout_5->setWidget(0, QFormLayout::FieldRole, comboBox_5);
+        formLayout_5->setWidget(0, QFormLayout::FieldRole, stroke);
 
 
         gridLayout_2->addLayout(formLayout_5, 0, 0, 1, 1);
@@ -206,11 +208,11 @@ public:
 
         formLayout_7->setWidget(0, QFormLayout::LabelRole, label_8);
 
-        comboBox_7 = new QComboBox(groupBox);
-        comboBox_7->addItem(QString());
-        comboBox_7->setObjectName(QString::fromUtf8("comboBox_7"));
+        stage = new QComboBox(groupBox);
+        stage->addItem(QString());
+        stage->setObjectName(QString::fromUtf8("stage"));
 
-        formLayout_7->setWidget(0, QFormLayout::FieldRole, comboBox_7);
+        formLayout_7->setWidget(0, QFormLayout::FieldRole, stage);
 
 
         gridLayout_2->addLayout(formLayout_7, 0, 1, 1, 2);
@@ -222,11 +224,11 @@ public:
 
         formLayout_8->setWidget(0, QFormLayout::LabelRole, label_9);
 
-        comboBox_8 = new QComboBox(groupBox);
-        comboBox_8->addItem(QString());
-        comboBox_8->setObjectName(QString::fromUtf8("comboBox_8"));
+        distance = new QComboBox(groupBox);
+        distance->addItem(QString());
+        distance->setObjectName(QString::fromUtf8("distance"));
 
-        formLayout_8->setWidget(0, QFormLayout::FieldRole, comboBox_8);
+        formLayout_8->setWidget(0, QFormLayout::FieldRole, distance);
 
 
         gridLayout_2->addLayout(formLayout_8, 1, 1, 2, 2);
@@ -238,11 +240,11 @@ public:
 
         formLayout_10->setWidget(0, QFormLayout::LabelRole, label_7);
 
-        comboBox_6 = new QComboBox(groupBox);
-        comboBox_6->addItem(QString());
-        comboBox_6->setObjectName(QString::fromUtf8("comboBox_6"));
+        strokeItem = new QComboBox(groupBox);
+        strokeItem->addItem(QString());
+        strokeItem->setObjectName(QString::fromUtf8("strokeItem"));
 
-        formLayout_10->setWidget(0, QFormLayout::FieldRole, comboBox_6);
+        formLayout_10->setWidget(0, QFormLayout::FieldRole, strokeItem);
 
 
         gridLayout_2->addLayout(formLayout_10, 1, 0, 2, 1);
@@ -254,11 +256,11 @@ public:
 
         formLayout_9->setWidget(0, QFormLayout::LabelRole, label_10);
 
-        comboBox_9 = new QComboBox(groupBox);
-        comboBox_9->addItem(QString());
-        comboBox_9->setObjectName(QString::fromUtf8("comboBox_9"));
+        env = new QComboBox(groupBox);
+        env->addItem(QString());
+        env->setObjectName(QString::fromUtf8("env"));
 
-        formLayout_9->setWidget(0, QFormLayout::FieldRole, comboBox_9);
+        formLayout_9->setWidget(0, QFormLayout::FieldRole, env);
 
 
         gridLayout_2->addLayout(formLayout_9, 0, 3, 1, 1);
@@ -457,28 +459,30 @@ public:
         groupBox->setTitle(QCoreApplication::translate("FormData", "\346\220\234\347\264\242\351\200\211\351\241\271", nullptr));
         label_2->setText(QCoreApplication::translate("FormData", "\346\200\247\345\210\253", nullptr));
         comboBox->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
+        comboBox->setItemText(1, QCoreApplication::translate("FormData", "\347\224\267", nullptr));
+        comboBox->setItemText(2, QCoreApplication::translate("FormData", "\345\245\263", nullptr));
 
         label_4->setText(QCoreApplication::translate("FormData", "\350\277\220\345\212\250\347\255\211\347\272\247", nullptr));
-        comboBox_3->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
+        level->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
 
         label_3->setText(QCoreApplication::translate("FormData", "\344\275\223\351\207\215", nullptr));
         label_5->setText(QCoreApplication::translate("FormData", "\346\211\200\345\261\236\351\230\237\344\274\215", nullptr));
-        comboBox_4->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
+        team->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
 
         label_6->setText(QCoreApplication::translate("FormData", "\346\263\263\345\247\277", nullptr));
-        comboBox_5->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
+        stroke->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
 
         label_8->setText(QCoreApplication::translate("FormData", "\346\265\213\350\257\225\351\230\266\346\256\265", nullptr));
-        comboBox_7->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
+        stage->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
 
         label_9->setText(QCoreApplication::translate("FormData", "\346\265\213\350\257\225\350\267\235\347\246\273", nullptr));
-        comboBox_8->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
+        distance->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
 
-        label_7->setText(QCoreApplication::translate("FormData", "\347\261\273\345\210\253", nullptr));
-        comboBox_6->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
+        label_7->setText(QCoreApplication::translate("FormData", "\346\263\263\345\247\277\351\241\271", nullptr));
+        strokeItem->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
 
         label_10->setText(QCoreApplication::translate("FormData", "\346\265\213\350\257\225\347\216\257\345\242\203", nullptr));
-        comboBox_9->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
+        env->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
 
         lineEdit->setPlaceholderText(QCoreApplication::translate("FormData", "\346\220\234\347\264\242\345\247\223\345\220\215...", nullptr));
         pushButton->setText(QCoreApplication::translate("FormData", "\346\220\234\347\264\242", nullptr));

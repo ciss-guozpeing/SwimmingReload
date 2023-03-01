@@ -416,7 +416,7 @@ public:
         teamlabel_2->setText(QCoreApplication::translate("AddRecord", "\346\211\200\345\261\236\351\230\237", nullptr));
         stroke->setItemText(0, QCoreApplication::translate("AddRecord", "\350\257\267\351\200\211\346\213\251", nullptr));
 
-        typelabel_2->setText(QCoreApplication::translate("AddRecord", "\347\261\273\345\210\253", nullptr));
+        typelabel_2->setText(QCoreApplication::translate("AddRecord", "\346\263\263\345\247\277\351\241\271", nullptr));
         level->setItemText(0, QCoreApplication::translate("AddRecord", "\350\257\267\351\200\211\346\213\251", nullptr));
 
         strokeItem->setItemText(0, QCoreApplication::translate("AddRecord", "\350\257\267\351\200\211\346\213\251", nullptr));

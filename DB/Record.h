@@ -20,6 +20,8 @@ public:
                       QString maxPower1,QString maxPower2,QString maxPower3);
 
     void deleteRecord(QString id);
+
+    void selectRecord(QString id);
 signals:
 
 };

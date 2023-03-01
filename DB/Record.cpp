@@ -69,7 +69,13 @@ void Record::deleteRecord(QString id)
     ZpSqlQueryModel* zpSqlQueryModel = ZpSqlQueryModel::getInstance();
     QSqlQuery query = QSqlQuery(ConnectionPool::openConnection());
     QString sql = QString("delete from record where id='%1'").arg(id);
-    qDebug() << sql;
     query.exec(sql);
     zpSqlQueryModel->refresh();
+}
+
+void Record::selectRecord(QString id)
+{
+    QSqlQuery query = QSqlQuery(ConnectionPool::openConnection());
+    QString sql = QString("delete from record where id='%1'").arg(id);
+    query.exec(sql);
 }

@@ -15,8 +15,8 @@ void DeleteRecord::deleteTableRecord()
     QModelIndexList rowsIndex = tableView->selectModel()->selectedRows();
     Record* record = new Record;
     for(int i=0;i<rowsIndex.count();i++){
-        int rowIndex = rowsIndex.at(i).row();
-        QString redocrdId = tableView->model()->record(0).value("id").toString();
+        int rowIndex = rowsIndex.at(rowsIndex.count() - (i+1)).row();
+        QString redocrdId = tableView->model()->record(rowIndex).value("id").toString();
         record->deleteRecord(redocrdId);
     }
 }

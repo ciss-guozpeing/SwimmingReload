@@ -14,7 +14,8 @@ class AddRecord : public QDialog
     Q_OBJECT
     QString getGender(bool isManCheck,bool isWomanCheck);
 
-    void setWarnText();
+    void setWarnText(QString text);
+
 
 public:
     explicit AddRecord(QWidget *parent = nullptr);
@@ -22,8 +23,12 @@ public:
     static AddRecord *getInstance();
 
     void initUI();
+    bool checkText(QString name, QString gender, QString weight,QString stroke,QString storkeItem);
+    QMap<QString,QString> getTableRecord();
     void setTableRecord();
-    void setDataWidgetMapper();
+
+public slots:
+        void on_resetStrokeItem(QString stroke);
 
 private:
     Ui::AddRecord *ui;

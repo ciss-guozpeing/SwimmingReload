@@ -14,7 +14,6 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QScrollArea>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -22,38 +21,29 @@ QT_BEGIN_NAMESPACE
 class Ui_ViewRecord
 {
 public:
-    QVBoxLayout *verticalLayout;
+    QGridLayout *gridLayout;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
-    QVBoxLayout *verticalLayout_2;
-    QGridLayout *gridLayout;
 
     void setupUi(QDialog *ViewRecord)
     {
         if (ViewRecord->objectName().isEmpty())
             ViewRecord->setObjectName(QString::fromUtf8("ViewRecord"));
-        ViewRecord->resize(400, 300);
-        verticalLayout = new QVBoxLayout(ViewRecord);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(6, 6, 6, 6);
+        ViewRecord->resize(870, 500);
+        ViewRecord->setMinimumSize(QSize(870, 500));
+        ViewRecord->setMaximumSize(QSize(10000, 10000));
+        gridLayout = new QGridLayout(ViewRecord);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setContentsMargins(6, 6, 6, 6);
         scrollArea = new QScrollArea(ViewRecord);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 386, 286));
-        verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        gridLayout = new QGridLayout();
-        gridLayout->setSpacing(0);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-
-        verticalLayout_2->addLayout(gridLayout);
-
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 856, 486));
         scrollArea->setWidget(scrollAreaWidgetContents);
 
-        verticalLayout->addWidget(scrollArea);
+        gridLayout->addWidget(scrollArea, 0, 0, 1, 1);
 
 
         retranslateUi(ViewRecord);

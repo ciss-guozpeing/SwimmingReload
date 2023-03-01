@@ -41,6 +41,10 @@ private slots:
 
     void on_asSaveBtn_clicked();
 
+
+    //
+    void on_resetStrokeItem(QString stroke);
+
 private:
     Ui::FormData *ui;
 };

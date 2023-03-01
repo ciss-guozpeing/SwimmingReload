@@ -50,6 +50,16 @@
               <string>请选择</string>
              </property>
             </item>
+            <item>
+             <property name="text">
+              <string>男</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>女</string>
+             </property>
+            </item>
            </widget>
           </item>
          </layout>
@@ -64,7 +74,7 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QComboBox" name="comboBox_3">
+           <widget class="QComboBox" name="level">
             <item>
              <property name="text">
               <string>请选择</string>
@@ -98,7 +108,7 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QComboBox" name="comboBox_4">
+           <widget class="QComboBox" name="team">
             <item>
              <property name="text">
               <string>请选择</string>
@@ -135,7 +145,7 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QComboBox" name="comboBox_5">
+           <widget class="QComboBox" name="stroke">
             <item>
              <property name="text">
               <string>请选择</string>
@@ -155,7 +165,7 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QComboBox" name="comboBox_7">
+           <widget class="QComboBox" name="stage">
             <item>
              <property name="text">
               <string>请选择</string>
@@ -175,7 +185,7 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QComboBox" name="comboBox_8">
+           <widget class="QComboBox" name="distance">
             <item>
              <property name="text">
               <string>请选择</string>
@@ -190,12 +200,12 @@
           <item row="0" column="0">
            <widget class="QLabel" name="label_7">
             <property name="text">
-             <string>类别</string>
+             <string>泳姿项</string>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QComboBox" name="comboBox_6">
+           <widget class="QComboBox" name="strokeItem">
             <item>
              <property name="text">
               <string>请选择</string>
@@ -215,7 +225,7 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QComboBox" name="comboBox_9">
+           <widget class="QComboBox" name="env">
             <item>
              <property name="text">
               <string>请选择</string>

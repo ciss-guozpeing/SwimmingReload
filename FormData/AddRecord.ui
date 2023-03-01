@@ -266,7 +266,7 @@
          <item row="3" column="0">
           <widget class="QLabel" name="typelabel_2">
            <property name="text">
-            <string>类别</string>
+            <string>泳姿项</string>
            </property>
           </widget>
          </item>

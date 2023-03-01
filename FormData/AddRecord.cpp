@@ -4,6 +4,7 @@
 #include "TableView.h"
 #include "../Common/CustomType.h"
 #include "Components/ZpSqlQueryModel.h"
+#include "../../Common/TableMess.h"
 #include "../DB/DBPool.h"
 #include "../DB/Record.h"
 #include <QDebug>
@@ -19,8 +20,16 @@ AddRecord::AddRecord(QWidget *parent) :
     ui->buttonBox->button(QDialogButtonBox::Cancel)->setText("取消");
     this->setWindowTitle(QString("添加记录"));
 
-//    this->setDataWidgetMapper();
-
+    //
+    TableMess* tableMess= TableMess::getInstance();
+    qDebug() << tableMess->getLevelItem();
+    ui->level->addItems(tableMess->getLevelItem());
+    ui->team->addItems(tableMess->getTeamItem());
+    ui->stage->addItems(tableMess->getStageItem());
+    ui->env->addItems(tableMess->getEnvItem());
+    ui->distance->addItems(tableMess->getDistanceItem());
+    ui->stroke->addItems(tableMess->getStrokeItem());
+    connect(ui->stroke,SIGNAL(currentTextChanged(const QString)),this,SLOT(on_resetStrokeItem(const QString)));
 }
 
 AddRecord::~AddRecord()
@@ -36,6 +45,31 @@ AddRecord *AddRecord::getInstance()
     return INSTANCE;
 }
 
+bool AddRecord::checkText(QString name, QString gender, QString weight,QString stroke,QString storkeItem)
+{
+    if(name==""){
+        this->setWarnText("姓名未填写");
+        return false;
+    }
+    if(gender==""){
+        this->setWarnText("性别未选择");
+        return false;
+    }
+    if(weight=="0.00"){
+        this->setWarnText("体重未设置");
+        return false;
+    }
+    if(stroke=="请选择"){
+        this->setWarnText("泳姿未选择");
+        return false;
+    }
+    if(storkeItem=="请选择"){
+        this->setWarnText("泳姿项未选择");
+        return false;
+    }
+    return true;
+}
+
 void AddRecord::initUI()
 {
     ui->warnLabel->clear();
@@ -48,18 +82,44 @@ void AddRecord::initUI()
     ui->maxPower3->setValue(0.00);
 }
 
-QString AddRecord::getGender(bool isManChecked, bool isWomanChecked)
+void AddRecord::on_resetStrokeItem(QString stroke)
 {
-    QString gender;
-    if (isManChecked) {
-        gender = "男";
-    } else if(isWomanChecked){
-        gender = "女";
+    ui->strokeItem->clear();
+
+    if(stroke=="请选择"){
+        ui->strokeItem->addItems({"请选择"});
     } else {
-        gender = "请选择";
+        TableMess* tableMess= TableMess::getInstance();
+        ui->strokeItem->addItems(tableMess->getStrokeIItem()[stroke]);
     }
-    return gender;
 }
+
+QMap<QString,QString>AddRecord::getTableRecord()
+{
+    QMap<QString,QString> record;
+    QString name = ui->name->text();
+    QString gender = getGender(ui->man->isChecked(),ui->woman->isChecked());
+    QString weight = ui->weight->text();
+    QString birthday = ui->birthday->text();
+    QString level = ui->level->currentText();
+    QString team = ui->team->currentText();
+    QString stage = ui->stage->currentText();
+    QString stroke = ui->stroke->currentText();
+    QString strokeItem = ui->strokeItem->currentText();
+    QString distance = ui->distance->currentText();
+    QString maxPower1 = ui->maxPower1->text();
+    QString maxPower2 = ui->maxPower2->text();
+    QString maxPower3 = ui->maxPower3->text();
+    QString env = ui->env->currentText();
+
+    record["name"] = name;
+    record["weight"] = weight;
+    record["gender"] = gender;
+    record["stroke"] = stroke;
+    record["strokeItem"] = strokeItem;
+    return record;
+}
+
 
 void AddRecord::setTableRecord()
 {
@@ -81,6 +141,7 @@ void AddRecord::setTableRecord()
     QString maxPower3 = ui->maxPower3->text();
     QString env = ui->env->currentText();
 
+
     record->createRecord(name,  gender, weight, birthday,
                           level, team,  stage, distance,  env, stroke, strokeItem,
                           maxPower1, maxPower2, maxPower3);
@@ -89,26 +150,25 @@ void AddRecord::setTableRecord()
     zpSqlQueryModel->refresh();
     tableView->show();
 
+
     delete record;
 }
 
-void AddRecord::setDataWidgetMapper()
+QString AddRecord::getGender(bool isManChecked, bool isWomanChecked)
 {
-    TableView* tableView = TableView::getInstance();
-   QDataWidgetMapper* m_dataMapper = new QDataWidgetMapper(this);
-
-    //设置数据模型
-    m_dataMapper->setModel(tableView->model());
-
-    m_dataMapper->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
-
-    //界面组件与tabModel的具体字段之间的联系
-    m_dataMapper->addMapping(ui->weight,2);
-//    m_dataMapper->addMapping(ui->lineEditName,1);
-//    m_dataMapper->addMapping(ui->cbxSex,2);
-//    m_dataMapper->addMapping(ui->spinBoxAge,3);
-//    m_dataMapper->addMapping(ui->lineEditAddr,4);
-//    m_dataMapper->addMapping(ui->doubleSpinBoxHeight,5);
+    QString gender;
+    if (isManChecked) {
+        gender = "男";
+    } else if(isWomanChecked){
+        gender = "女";
+    } else {
+        gender = "";
+    }
+    return gender;
 }
 
-
+void AddRecord::setWarnText(QString text)
+{
+    ui->warnLabel->clear();
+    ui->warnLabel->setText(text);
+}

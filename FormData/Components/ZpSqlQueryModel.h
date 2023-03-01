@@ -9,11 +9,20 @@ class ZpSqlQueryModel: public QSqlQueryModel
 {
     Q_OBJECT
 
-    bool setName(int id, QString Value);
-    void setGender();
-    void setBirthday();
-    void setWeight();
-    void setLevel();
+    bool setName(int id, QString value);
+    bool setGender(int id, QString value);
+    bool setBirthday(int id, QString value);
+    bool setWeight(int id, QString value);
+    bool setLevel(int id, QString value);
+    bool setTeam(int id, QString value);
+    bool setStage(int id, QString value);
+    bool setEnv(int id, QString value);
+    bool setDistance(int id, QString value);
+    bool setStroke(int id, QString value);
+    bool setStrokeItem(int id, QString value);
+    bool setMaxPower1(int id, QString value);
+    bool setMaxPower2(int id, QString value);
+    bool setMaxPower3(int id, QString value);
 
 public:
     ZpSqlQueryModel(QObject *parent = 0);

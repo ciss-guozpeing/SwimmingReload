@@ -1,6 +1,7 @@
 #include "FormData.h"
 #include "ui_FormData.h"
 
+#include "../../Common/TableMess.h"
 #include "AddRecord.h"
 #include "DeleteRecord.h"
 #include "ViewRecord.h"
@@ -8,6 +9,7 @@
 #include "ClusterPage.h"
 #include "StatisticsPage.h"
 #include "PersonalChart.h"
+#include "Components/ZpSqlQueryModel.h"
 #include <QDebug>
 
 FormData::FormData(QWidget *parent) :
@@ -25,6 +27,17 @@ FormData::~FormData()
 
 void FormData::initUI()
 {
+    //
+    TableMess* tableMess= TableMess::getInstance();
+    ui->level->addItems(tableMess->getLevelItem());
+    ui->team->addItems(tableMess->getTeamItem());
+    ui->stage->addItems(tableMess->getStageItem());
+    ui->env->addItems(tableMess->getEnvItem());
+    ui->distance->addItems(tableMess->getDistanceItem());
+    ui->stroke->addItems(tableMess->getStrokeItem());
+    connect(ui->stroke,SIGNAL(currentTextChanged(const QString)),this,SLOT(on_resetStrokeItem(const QString)));
+
+    //
     ui->calculateWidget->hide();
     TableView* tableView = TableView::getInstance();
     ui->tabWidget->addTab(tableView,"原始数据表");
@@ -42,12 +55,24 @@ void FormData::on_addRecordBtn_clicked()
     qDebug() << QString("增加记录");
     AddRecord* addRecord = AddRecord::getInstance();
     int ret = addRecord->exec();
-    qDebug() << ret;
+    QMap<QString,QString> record = addRecord->getTableRecord();
+    bool isExists = addRecord->checkText(record["name"],record["gender"],record["weight"],
+            record["stroke"],record["strokeItem"]);
+
+    qDebug() <<"asdfasdfsdfadsf" <<record["stroke"]<<record["strokeItem"];
     if (ret==QDialog::Accepted)
     {
-        addRecord->setTableRecord();
+        if(isExists){
+            addRecord->setTableRecord();
+            addRecord->initUI();
+        } else {
+            this->on_addRecordBtn_clicked();
+        }
+    }
+    if (ret==QDialog::Rejected){
         addRecord->initUI();
     }
+
 }
 
 
@@ -58,7 +83,6 @@ void FormData::on_viewRecordBtn_clicked()
     viewRecord->viewTableRecord();
     viewRecord->exec();
     delete viewRecord;
-
 }
 
 
@@ -71,6 +95,8 @@ void FormData::on_openExcelBtn_clicked()
 void FormData::on_refreshBtn_clicked()
 {
     qDebug() << QString("刷新记录");
+    ZpSqlQueryModel* zpSqlQueryModel = ZpSqlQueryModel::getInstance();
+    zpSqlQueryModel->refresh();
 }
 
 
@@ -131,3 +157,14 @@ void FormData::on_asSaveBtn_clicked()
     qDebug() << QString("另存为");
 }
 
+void FormData::on_resetStrokeItem(QString stroke)
+{
+    ui->strokeItem->clear();
+
+    if(stroke=="请选择"){
+        ui->strokeItem->addItems({"请选择"});
+    } else {
+        TableMess* tableMess= TableMess::getInstance();
+        ui->strokeItem->addItems(tableMess->getStrokeIItem()[stroke]);
+    }
+}

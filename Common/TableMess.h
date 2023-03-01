@@ -19,6 +19,13 @@ public:
     static TableMess *getInstance();
 
     QStringList getTableHeader();
+    QStringList getLevelItem();
+    QStringList getTeamItem();
+    QStringList getStageItem();
+    QStringList getEnvItem();
+    QStringList getDistanceItem();
+    QStringList getStrokeItem();
+    QMap<QString,QStringList> getStrokeIItem();
 
 
 signals:
