@@ -102,6 +102,29 @@ QItemSelectionModel* TableView::selectModel()
     return m_selectModel;
 }
 
+QVector<QStringList> TableView::getCurTableData()
+{
+    QVector<QStringList> tableData;
+
+    int rowCount = this->model()->rowCount();
+    int columnCount = this->model()->columnCount();
+
+    QSqlQueryModel* model = this->model();
+
+    for(int i=0; i<rowCount; i++) {
+
+        QStringList rowData;
+        for(int j=0; j<columnCount; j++) {
+            QString cellValue = model->data(model->index(i,j)).toString();
+            rowData.push_back(cellValue);
+        }
+
+        tableData.push_back(rowData);
+    }
+
+    return tableData;
+}
+
 QVector<personData> TableView::getPersons()
 {
     return m_persons;

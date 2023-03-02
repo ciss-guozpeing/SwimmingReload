@@ -268,14 +268,14 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="QLineEdit" name="lineEdit">
+           <widget class="QLineEdit" name="searchEdit">
             <property name="placeholderText">
              <string>搜索姓名...</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="searchBtn">
             <property name="text">
              <string>搜索</string>
             </property>

@@ -41,9 +41,13 @@ private slots:
 
     void on_asSaveBtn_clicked();
 
+    void on_searchBtn_clicked();
 
     //
     void on_resetStrokeItem(QString stroke);
+
+    void on_searchText(QString value);
+
 
 private:
     Ui::FormData *ui;

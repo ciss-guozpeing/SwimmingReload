@@ -57,6 +57,7 @@ include($$PWD/DashBoard/DashBoard.pri)
 include($$PWD/DB/DB.pri)
 include($$PWD/Common/Common.pri)
 include($$PWD/Settings/Settings.pri)
+include($$PWD/Excel/Excel.pri)
 
 ###################################
 

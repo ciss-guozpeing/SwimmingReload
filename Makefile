@@ -157,7 +157,10 @@ SOURCES       = main.cpp \
 		Common/Algorithm/Kmeans.cpp \
 		Common/TableMess.cpp \
 		Common/Theme.cpp \
-		Settings/Settings.cpp Debug/temp/rcc/qrc_res.cpp \
+		Common/Tools.cpp \
+		Settings/Settings.cpp \
+		Excel/Open.cpp \
+		Excel/Save.cpp Debug/temp/rcc/qrc_res.cpp \
 		Debug/temp/moc/moc_mainwindow.cpp \
 		Debug/temp/moc/moc_xlsxdocument.cpp \
 		Debug/temp/moc/moc_qcustomplot.cpp \
@@ -210,7 +213,10 @@ SOURCES       = main.cpp \
 		Debug/temp/moc/moc_Record.cpp \
 		Debug/temp/moc/moc_TableMess.cpp \
 		Debug/temp/moc/moc_Theme.cpp \
-		Debug/temp/moc/moc_Settings.cpp
+		Debug/temp/moc/moc_Tools.cpp \
+		Debug/temp/moc/moc_Settings.cpp \
+		Debug/temp/moc/moc_Open.cpp \
+		Debug/temp/moc/moc_Save.cpp
 OBJECTS       = Debug/temp/obj/main.o \
 		Debug/temp/obj/mainwindow.o \
 		Debug/temp/obj/xlsxdocpropscore.o \
@@ -316,7 +322,10 @@ OBJECTS       = Debug/temp/obj/main.o \
 		Debug/temp/obj/Kmeans.o \
 		Debug/temp/obj/TableMess.o \
 		Debug/temp/obj/Theme.o \
+		Debug/temp/obj/Tools.o \
 		Debug/temp/obj/Settings.o \
+		Debug/temp/obj/Open.o \
+		Debug/temp/obj/Save.o \
 		Debug/temp/obj/qrc_res.o \
 		Debug/temp/obj/moc_mainwindow.o \
 		Debug/temp/obj/moc_xlsxdocument.o \
@@ -370,7 +379,10 @@ OBJECTS       = Debug/temp/obj/main.o \
 		Debug/temp/obj/moc_Record.o \
 		Debug/temp/obj/moc_TableMess.o \
 		Debug/temp/obj/moc_Theme.o \
-		Debug/temp/obj/moc_Settings.o
+		Debug/temp/obj/moc_Tools.o \
+		Debug/temp/obj/moc_Settings.o \
+		Debug/temp/obj/moc_Open.o \
+		Debug/temp/obj/moc_Save.o
 DIST          = Config/config.ini \
 		../../../../Opt/Qt/5.15.2/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Opt/Qt/5.15.2/clang_64/mkspecs/qdevice.pri \
@@ -569,6 +581,7 @@ DIST          = Config/config.ini \
 		DB/DB.pri \
 		Common/Common.pri \
 		Settings/Settings.pri \
+		Excel/Excel.pri \
 		../../../../Opt/Qt/5.15.2/clang_64/mkspecs/features/resolve_config.prf \
 		../../../../Opt/Qt/5.15.2/clang_64/mkspecs/features/default_post.prf \
 		../../../../Opt/Qt/5.15.2/clang_64/mkspecs/features/mac/default_post.prf \
@@ -711,7 +724,10 @@ DIST          = Config/config.ini \
 		Common/CustomType.h \
 		Common/TableMess.h \
 		Common/Theme.h \
-		Settings/Settings.h main.cpp \
+		Common/Tools.h \
+		Settings/Settings.h \
+		Excel/Open.h \
+		Excel/Save.h main.cpp \
 		mainwindow.cpp \
 		libs/xlsx/xlsxdocpropscore.cpp \
 		libs/xlsx/xlsxdocpropsapp.cpp \
@@ -816,7 +832,10 @@ DIST          = Config/config.ini \
 		Common/Algorithm/Kmeans.cpp \
 		Common/TableMess.cpp \
 		Common/Theme.cpp \
-		Settings/Settings.cpp
+		Common/Tools.cpp \
+		Settings/Settings.cpp \
+		Excel/Open.cpp \
+		Excel/Save.cpp
 QMAKE_TARGET  = 国家队水中力量测评平台
 DESTDIR       = Debug/bin/
 TARGET        = Debug/bin/国家队水中力量测评平台.app/Contents/MacOS/国家队水中力量测评平台
@@ -1036,6 +1055,7 @@ Makefile: SwimmingReload.pro ../../../../Opt/Qt/5.15.2/clang_64/mkspecs/macx-cla
 		DB/DB.pri \
 		Common/Common.pri \
 		Settings/Settings.pri \
+		Excel/Excel.pri \
 		../../../../Opt/Qt/5.15.2/clang_64/mkspecs/features/resolve_config.prf \
 		../../../../Opt/Qt/5.15.2/clang_64/mkspecs/features/default_post.prf \
 		../../../../Opt/Qt/5.15.2/clang_64/mkspecs/features/mac/default_post.prf \
@@ -1267,6 +1287,7 @@ DashBoard/DashBoard.pri:
 DB/DB.pri:
 Common/Common.pri:
 Settings/Settings.pri:
+Excel/Excel.pri:
 ../../../../Opt/Qt/5.15.2/clang_64/mkspecs/features/resolve_config.prf:
 ../../../../Opt/Qt/5.15.2/clang_64/mkspecs/features/default_post.prf:
 ../../../../Opt/Qt/5.15.2/clang_64/mkspecs/features/mac/default_post.prf:
@@ -1331,8 +1352,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents res.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Opt/Qt/5.15.2/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h libs/xlsx/xlsxdocpropscore_p.h libs/xlsx/xlsxdocpropsapp_p.h libs/xlsx/xlsxrelationships_p.h libs/xlsx/xlsxutility_p.h libs/xlsx/xlsxsharedstrings_p.h libs/xlsx/xlsxcontenttypes_p.h libs/xlsx/xlsxtheme_p.h libs/xlsx/xlsxformat.h libs/xlsx/xlsxworkbook.h libs/xlsx/xlsxstyles_p.h libs/xlsx/xlsxabstractsheet.h libs/xlsx/xlsxabstractsheet_p.h libs/xlsx/xlsxworksheet.h libs/xlsx/xlsxworksheet_p.h libs/xlsx/xlsxchartsheet.h libs/xlsx/xlsxchartsheet_p.h libs/xlsx/xlsxzipwriter_p.h libs/xlsx/xlsxworkbook_p.h libs/xlsx/xlsxformat_p.h libs/xlsx/xlsxglobal.h libs/xlsx/xlsxdrawing_p.h libs/xlsx/xlsxzipreader_p.h libs/xlsx/xlsxdocument.h libs/xlsx/xlsxdocument_p.h libs/xlsx/xlsxcell.h libs/xlsx/xlsxcell_p.h libs/xlsx/xlsxdatavalidation.h libs/xlsx/xlsxdatavalidation_p.h libs/xlsx/xlsxcellreference.h libs/xlsx/xlsxcellrange.h libs/xlsx/xlsxrichstring_p.h libs/xlsx/xlsxrichstring.h libs/xlsx/xlsxconditionalformatting.h libs/xlsx/xlsxconditionalformatting_p.h libs/xlsx/xlsxcolor_p.h libs/xlsx/xlsxnumformatparser_p.h libs/xlsx/xlsxdrawinganchor_p.h libs/xlsx/xlsxmediafile_p.h libs/xlsx/xlsxabstractooxmlfile.h libs/xlsx/xlsxabstractooxmlfile_p.h libs/xlsx/xlsxchart.h libs/xlsx/xlsxchart_p.h libs/xlsx/xlsxsimpleooxmlfile_p.h libs/xlsx/xlsxcellformula.h libs/xlsx/xlsxcellformula_p.h libs/customplot/qcustomplot.h libs/log4qt/appender.h libs/log4qt/appenderskeleton.h libs/log4qt/basicconfigurator.h libs/log4qt/consoleappender.h libs/log4qt/dailyrollingfileappender.h libs/log4qt/fileappender.h libs/log4qt/helpers/classlogger.h libs/log4qt/helpers/configuratorhelper.h libs/log4qt/helpers/datetime.h libs/log4qt/helpers/factory.h libs/log4qt/helpers/initialisationhelper.h libs/log4qt/helpers/logerror.h libs/log4qt/helpers/logobject.h libs/log4qt/helpers/logobjectptr.h libs/log4qt/helpers/optionconverter.h libs/log4qt/helpers/patternformatter.h libs/log4qt/helpers/properties.h libs/log4qt/hierarchy.h libs/log4qt/layout.h libs/log4qt/level.h libs/log4qt/log4qt.h libs/log4qt/logger.h libs/log4qt/loggerrepository.h libs/log4qt/loggingevent.h libs/log4qt/logmanager.h libs/log4qt/mdc.h libs/log4qt/ndc.h libs/log4qt/patternlayout.h libs/log4qt/propertyconfigurator.h libs/log4qt/rollingfileappender.h libs/log4qt/simplelayout.h libs/log4qt/spi/filter.h libs/log4qt/ttcclayout.h libs/log4qt/writerappender.h libs/log4qt/varia/debugappender.h libs/log4qt/varia/denyallfilter.h libs/log4qt/varia/nullappender.h libs/log4qt/varia/levelmatchfilter.h libs/log4qt/varia/levelrangefilter.h libs/log4qt/varia/listappender.h libs/log4qt/varia/stringmatchfilter.h libs/zpWidgetsUI/Layouts/ZpFlowlayout.h FormData/AddRecord.h FormData/ClusterPage.h FormData/Components/BirthdayDelegate.h FormData/Components/GenderDelegate.h FormData/Components/LevelDelegate.h FormData/Components/MaxPowerDelegate.h FormData/Components/TeamDelegate.h FormData/Components/DistanceDelegate.h FormData/Components/StageDelegate.h FormData/Components/EnvDelegate.h FormData/Components/StrokeDelegate.h FormData/Components/StrokeItemDelegate.h FormData/Components/ViewBase.h FormData/Components/WeightDelegate.h FormData/Components/ZpSqlQueryModel.h FormData/DeleteRecord.h FormData/FormData.h FormData/PersonalChart.h FormData/StatisticsPage.h FormData/TableView.h FormData/ViewRecord.h DashBoard/DashBoard.h DB/Base.h DB/DB.h DB/DBPool.h DB/Person.h DB/Record.h Common/Algorithm/Kmeans.h Common/CustomType.h Common/TableMess.h Common/Theme.h Settings/Settings.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp libs/xlsx/xlsxdocpropscore.cpp libs/xlsx/xlsxdocpropsapp.cpp libs/xlsx/xlsxrelationships.cpp libs/xlsx/xlsxutility.cpp libs/xlsx/xlsxsharedstrings.cpp libs/xlsx/xlsxcontenttypes.cpp libs/xlsx/xlsxtheme.cpp libs/xlsx/xlsxformat.cpp libs/xlsx/xlsxstyles.cpp libs/xlsx/xlsxworkbook.cpp libs/xlsx/xlsxabstractsheet.cpp libs/xlsx/xlsxworksheet.cpp libs/xlsx/xlsxchartsheet.cpp libs/xlsx/xlsxzipwriter.cpp libs/xlsx/xlsxdrawing.cpp libs/xlsx/xlsxzipreader.cpp libs/xlsx/xlsxdocument.cpp libs/xlsx/xlsxcell.cpp libs/xlsx/xlsxdatavalidation.cpp libs/xlsx/xlsxcellreference.cpp libs/xlsx/xlsxcellrange.cpp libs/xlsx/xlsxrichstring.cpp libs/xlsx/xlsxconditionalformatting.cpp libs/xlsx/xlsxcolor.cpp libs/xlsx/xlsxnumformatparser.cpp libs/xlsx/xlsxdrawinganchor.cpp libs/xlsx/xlsxmediafile.cpp libs/xlsx/xlsxabstractooxmlfile.cpp libs/xlsx/xlsxchart.cpp libs/xlsx/xlsxsimpleooxmlfile.cpp libs/xlsx/xlsxcellformula.cpp libs/customplot/qcustomplot.cpp libs/log4qt/appenderskeleton.cpp libs/log4qt/basicconfigurator.cpp libs/log4qt/consoleappender.cpp libs/log4qt/dailyrollingfileappender.cpp libs/log4qt/fileappender.cpp libs/log4qt/helpers/classlogger.cpp libs/log4qt/helpers/configuratorhelper.cpp libs/log4qt/helpers/datetime.cpp libs/log4qt/helpers/factory.cpp libs/log4qt/helpers/initialisationhelper.cpp libs/log4qt/helpers/logerror.cpp libs/log4qt/helpers/logobject.cpp libs/log4qt/helpers/logobjectptr.cpp libs/log4qt/helpers/optionconverter.cpp libs/log4qt/helpers/patternformatter.cpp libs/log4qt/helpers/properties.cpp libs/log4qt/hierarchy.cpp libs/log4qt/layout.cpp libs/log4qt/level.cpp libs/log4qt/log4qt.cpp libs/log4qt/logger.cpp libs/log4qt/loggerrepository.cpp libs/log4qt/loggingevent.cpp libs/log4qt/logmanager.cpp libs/log4qt/mdc.cpp libs/log4qt/ndc.cpp libs/log4qt/patternlayout.cpp libs/log4qt/propertyconfigurator.cpp libs/log4qt/rollingfileappender.cpp libs/log4qt/simplelayout.cpp libs/log4qt/spi/filter.cpp libs/log4qt/ttcclayout.cpp libs/log4qt/writerappender.cpp libs/log4qt/varia/debugappender.cpp libs/log4qt/varia/denyallfilter.cpp libs/log4qt/varia/nullappender.cpp libs/log4qt/varia/levelmatchfilter.cpp libs/log4qt/varia/levelrangefilter.cpp libs/log4qt/varia/listappender.cpp libs/log4qt/varia/stringmatchfilter.cpp libs/zpWidgetsUI/Layouts/ZpFlowlayout.cpp FormData/AddRecord.cpp FormData/ClusterPage.cpp FormData/Components/BirthdayDelegate.cpp FormData/Components/GenderDelegate.cpp FormData/Components/LevelDelegate.cpp FormData/Components/MaxPowerDelegate.cpp FormData/Components/TeamDelegate.cpp FormData/Components/DistanceDelegate.cpp FormData/Components/StageDelegate.cpp FormData/Components/EnvDelegate.cpp FormData/Components/StrokeDelegate.cpp FormData/Components/StrokeItemDelegate.cpp FormData/Components/ViewBase.cpp FormData/Components/WeightDelegate.cpp FormData/Components/ZpSqlQueryModel.cpp FormData/DeleteRecord.cpp FormData/FormData.cpp FormData/PersonalChart.cpp FormData/StatisticsPage.cpp FormData/TableView.cpp FormData/ViewRecord.cpp DashBoard/DashBoard.cpp DB/Base.cpp DB/DB.cpp DB/DBPool.cpp DB/Person.cpp DB/Record.cpp Common/Algorithm/Kmeans.cpp Common/TableMess.cpp Common/Theme.cpp Settings/Settings.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h libs/xlsx/xlsxdocpropscore_p.h libs/xlsx/xlsxdocpropsapp_p.h libs/xlsx/xlsxrelationships_p.h libs/xlsx/xlsxutility_p.h libs/xlsx/xlsxsharedstrings_p.h libs/xlsx/xlsxcontenttypes_p.h libs/xlsx/xlsxtheme_p.h libs/xlsx/xlsxformat.h libs/xlsx/xlsxworkbook.h libs/xlsx/xlsxstyles_p.h libs/xlsx/xlsxabstractsheet.h libs/xlsx/xlsxabstractsheet_p.h libs/xlsx/xlsxworksheet.h libs/xlsx/xlsxworksheet_p.h libs/xlsx/xlsxchartsheet.h libs/xlsx/xlsxchartsheet_p.h libs/xlsx/xlsxzipwriter_p.h libs/xlsx/xlsxworkbook_p.h libs/xlsx/xlsxformat_p.h libs/xlsx/xlsxglobal.h libs/xlsx/xlsxdrawing_p.h libs/xlsx/xlsxzipreader_p.h libs/xlsx/xlsxdocument.h libs/xlsx/xlsxdocument_p.h libs/xlsx/xlsxcell.h libs/xlsx/xlsxcell_p.h libs/xlsx/xlsxdatavalidation.h libs/xlsx/xlsxdatavalidation_p.h libs/xlsx/xlsxcellreference.h libs/xlsx/xlsxcellrange.h libs/xlsx/xlsxrichstring_p.h libs/xlsx/xlsxrichstring.h libs/xlsx/xlsxconditionalformatting.h libs/xlsx/xlsxconditionalformatting_p.h libs/xlsx/xlsxcolor_p.h libs/xlsx/xlsxnumformatparser_p.h libs/xlsx/xlsxdrawinganchor_p.h libs/xlsx/xlsxmediafile_p.h libs/xlsx/xlsxabstractooxmlfile.h libs/xlsx/xlsxabstractooxmlfile_p.h libs/xlsx/xlsxchart.h libs/xlsx/xlsxchart_p.h libs/xlsx/xlsxsimpleooxmlfile_p.h libs/xlsx/xlsxcellformula.h libs/xlsx/xlsxcellformula_p.h libs/customplot/qcustomplot.h libs/log4qt/appender.h libs/log4qt/appenderskeleton.h libs/log4qt/basicconfigurator.h libs/log4qt/consoleappender.h libs/log4qt/dailyrollingfileappender.h libs/log4qt/fileappender.h libs/log4qt/helpers/classlogger.h libs/log4qt/helpers/configuratorhelper.h libs/log4qt/helpers/datetime.h libs/log4qt/helpers/factory.h libs/log4qt/helpers/initialisationhelper.h libs/log4qt/helpers/logerror.h libs/log4qt/helpers/logobject.h libs/log4qt/helpers/logobjectptr.h libs/log4qt/helpers/optionconverter.h libs/log4qt/helpers/patternformatter.h libs/log4qt/helpers/properties.h libs/log4qt/hierarchy.h libs/log4qt/layout.h libs/log4qt/level.h libs/log4qt/log4qt.h libs/log4qt/logger.h libs/log4qt/loggerrepository.h libs/log4qt/loggingevent.h libs/log4qt/logmanager.h libs/log4qt/mdc.h libs/log4qt/ndc.h libs/log4qt/patternlayout.h libs/log4qt/propertyconfigurator.h libs/log4qt/rollingfileappender.h libs/log4qt/simplelayout.h libs/log4qt/spi/filter.h libs/log4qt/ttcclayout.h libs/log4qt/writerappender.h libs/log4qt/varia/debugappender.h libs/log4qt/varia/denyallfilter.h libs/log4qt/varia/nullappender.h libs/log4qt/varia/levelmatchfilter.h libs/log4qt/varia/levelrangefilter.h libs/log4qt/varia/listappender.h libs/log4qt/varia/stringmatchfilter.h libs/zpWidgetsUI/Layouts/ZpFlowlayout.h FormData/AddRecord.h FormData/ClusterPage.h FormData/Components/BirthdayDelegate.h FormData/Components/GenderDelegate.h FormData/Components/LevelDelegate.h FormData/Components/MaxPowerDelegate.h FormData/Components/TeamDelegate.h FormData/Components/DistanceDelegate.h FormData/Components/StageDelegate.h FormData/Components/EnvDelegate.h FormData/Components/StrokeDelegate.h FormData/Components/StrokeItemDelegate.h FormData/Components/ViewBase.h FormData/Components/WeightDelegate.h FormData/Components/ZpSqlQueryModel.h FormData/DeleteRecord.h FormData/FormData.h FormData/PersonalChart.h FormData/StatisticsPage.h FormData/TableView.h FormData/ViewRecord.h DashBoard/DashBoard.h DB/Base.h DB/DB.h DB/DBPool.h DB/Person.h DB/Record.h Common/Algorithm/Kmeans.h Common/CustomType.h Common/TableMess.h Common/Theme.h Common/Tools.h Settings/Settings.h Excel/Open.h Excel/Save.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp libs/xlsx/xlsxdocpropscore.cpp libs/xlsx/xlsxdocpropsapp.cpp libs/xlsx/xlsxrelationships.cpp libs/xlsx/xlsxutility.cpp libs/xlsx/xlsxsharedstrings.cpp libs/xlsx/xlsxcontenttypes.cpp libs/xlsx/xlsxtheme.cpp libs/xlsx/xlsxformat.cpp libs/xlsx/xlsxstyles.cpp libs/xlsx/xlsxworkbook.cpp libs/xlsx/xlsxabstractsheet.cpp libs/xlsx/xlsxworksheet.cpp libs/xlsx/xlsxchartsheet.cpp libs/xlsx/xlsxzipwriter.cpp libs/xlsx/xlsxdrawing.cpp libs/xlsx/xlsxzipreader.cpp libs/xlsx/xlsxdocument.cpp libs/xlsx/xlsxcell.cpp libs/xlsx/xlsxdatavalidation.cpp libs/xlsx/xlsxcellreference.cpp libs/xlsx/xlsxcellrange.cpp libs/xlsx/xlsxrichstring.cpp libs/xlsx/xlsxconditionalformatting.cpp libs/xlsx/xlsxcolor.cpp libs/xlsx/xlsxnumformatparser.cpp libs/xlsx/xlsxdrawinganchor.cpp libs/xlsx/xlsxmediafile.cpp libs/xlsx/xlsxabstractooxmlfile.cpp libs/xlsx/xlsxchart.cpp libs/xlsx/xlsxsimpleooxmlfile.cpp libs/xlsx/xlsxcellformula.cpp libs/customplot/qcustomplot.cpp libs/log4qt/appenderskeleton.cpp libs/log4qt/basicconfigurator.cpp libs/log4qt/consoleappender.cpp libs/log4qt/dailyrollingfileappender.cpp libs/log4qt/fileappender.cpp libs/log4qt/helpers/classlogger.cpp libs/log4qt/helpers/configuratorhelper.cpp libs/log4qt/helpers/datetime.cpp libs/log4qt/helpers/factory.cpp libs/log4qt/helpers/initialisationhelper.cpp libs/log4qt/helpers/logerror.cpp libs/log4qt/helpers/logobject.cpp libs/log4qt/helpers/logobjectptr.cpp libs/log4qt/helpers/optionconverter.cpp libs/log4qt/helpers/patternformatter.cpp libs/log4qt/helpers/properties.cpp libs/log4qt/hierarchy.cpp libs/log4qt/layout.cpp libs/log4qt/level.cpp libs/log4qt/log4qt.cpp libs/log4qt/logger.cpp libs/log4qt/loggerrepository.cpp libs/log4qt/loggingevent.cpp libs/log4qt/logmanager.cpp libs/log4qt/mdc.cpp libs/log4qt/ndc.cpp libs/log4qt/patternlayout.cpp libs/log4qt/propertyconfigurator.cpp libs/log4qt/rollingfileappender.cpp libs/log4qt/simplelayout.cpp libs/log4qt/spi/filter.cpp libs/log4qt/ttcclayout.cpp libs/log4qt/writerappender.cpp libs/log4qt/varia/debugappender.cpp libs/log4qt/varia/denyallfilter.cpp libs/log4qt/varia/nullappender.cpp libs/log4qt/varia/levelmatchfilter.cpp libs/log4qt/varia/levelrangefilter.cpp libs/log4qt/varia/listappender.cpp libs/log4qt/varia/stringmatchfilter.cpp libs/zpWidgetsUI/Layouts/ZpFlowlayout.cpp FormData/AddRecord.cpp FormData/ClusterPage.cpp FormData/Components/BirthdayDelegate.cpp FormData/Components/GenderDelegate.cpp FormData/Components/LevelDelegate.cpp FormData/Components/MaxPowerDelegate.cpp FormData/Components/TeamDelegate.cpp FormData/Components/DistanceDelegate.cpp FormData/Components/StageDelegate.cpp FormData/Components/EnvDelegate.cpp FormData/Components/StrokeDelegate.cpp FormData/Components/StrokeItemDelegate.cpp FormData/Components/ViewBase.cpp FormData/Components/WeightDelegate.cpp FormData/Components/ZpSqlQueryModel.cpp FormData/DeleteRecord.cpp FormData/FormData.cpp FormData/PersonalChart.cpp FormData/StatisticsPage.cpp FormData/TableView.cpp FormData/ViewRecord.cpp DashBoard/DashBoard.cpp DB/Base.cpp DB/DB.cpp DB/DBPool.cpp DB/Person.cpp DB/Record.cpp Common/Algorithm/Kmeans.cpp Common/TableMess.cpp Common/Theme.cpp Common/Tools.cpp Settings/Settings.cpp Excel/Open.cpp Excel/Save.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui FormData/AddRecord.ui FormData/ClusterPage.ui FormData/Components/ViewBase.ui FormData/FormData.ui FormData/PersonalChart.ui FormData/StatisticsPage.ui FormData/ViewRecord.ui DashBoard/DashBoard.ui DB/DB.ui Settings/Settings.ui $(DISTDIR)/
 	$(COPY_FILE) --parents Config/config.ini $(DISTDIR)/
 
@@ -1375,9 +1396,9 @@ compiler_moc_predefs_clean:
 Debug/temp/moc/moc_predefs.h: ../../../../Opt/Qt/5.15.2/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk -mmacosx-version-min=10.13 -Wall -Wextra -dM -E -o Debug/temp/moc/moc_predefs.h ../../../../Opt/Qt/5.15.2/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: Debug/temp/moc/moc_mainwindow.cpp Debug/temp/moc/moc_xlsxdocument.cpp Debug/temp/moc/moc_qcustomplot.cpp Debug/temp/moc/moc_appender.cpp Debug/temp/moc/moc_appenderskeleton.cpp Debug/temp/moc/moc_consoleappender.cpp Debug/temp/moc/moc_dailyrollingfileappender.cpp Debug/temp/moc/moc_fileappender.cpp Debug/temp/moc/moc_configuratorhelper.cpp Debug/temp/moc/moc_logobject.cpp Debug/temp/moc/moc_layout.cpp Debug/temp/moc/moc_logger.cpp Debug/temp/moc/moc_patternlayout.cpp Debug/temp/moc/moc_rollingfileappender.cpp Debug/temp/moc/moc_simplelayout.cpp Debug/temp/moc/moc_filter.cpp Debug/temp/moc/moc_ttcclayout.cpp Debug/temp/moc/moc_writerappender.cpp Debug/temp/moc/moc_debugappender.cpp Debug/temp/moc/moc_denyallfilter.cpp Debug/temp/moc/moc_nullappender.cpp Debug/temp/moc/moc_levelmatchfilter.cpp Debug/temp/moc/moc_levelrangefilter.cpp Debug/temp/moc/moc_listappender.cpp Debug/temp/moc/moc_stringmatchfilter.cpp Debug/temp/moc/moc_AddRecord.cpp Debug/temp/moc/moc_ClusterPage.cpp Debug/temp/moc/moc_GenderDelegate.cpp Debug/temp/moc/moc_LevelDelegate.cpp Debug/temp/moc/moc_MaxPowerDelegate.cpp Debug/temp/moc/moc_TeamDelegate.cpp Debug/temp/moc/moc_DistanceDelegate.cpp Debug/temp/moc/moc_StageDelegate.cpp Debug/temp/moc/moc_EnvDelegate.cpp Debug/temp/moc/moc_StrokeDelegate.cpp Debug/temp/moc/moc_StrokeItemDelegate.cpp Debug/temp/moc/moc_ViewBase.cpp Debug/temp/moc/moc_WeightDelegate.cpp Debug/temp/moc/moc_ZpSqlQueryModel.cpp Debug/temp/moc/moc_DeleteRecord.cpp Debug/temp/moc/moc_FormData.cpp Debug/temp/moc/moc_PersonalChart.cpp Debug/temp/moc/moc_StatisticsPage.cpp Debug/temp/moc/moc_TableView.cpp Debug/temp/moc/moc_ViewRecord.cpp Debug/temp/moc/moc_DashBoard.cpp Debug/temp/moc/moc_Base.cpp Debug/temp/moc/moc_DB.cpp Debug/temp/moc/moc_Person.cpp Debug/temp/moc/moc_Record.cpp Debug/temp/moc/moc_TableMess.cpp Debug/temp/moc/moc_Theme.cpp Debug/temp/moc/moc_Settings.cpp
+compiler_moc_header_make_all: Debug/temp/moc/moc_mainwindow.cpp Debug/temp/moc/moc_xlsxdocument.cpp Debug/temp/moc/moc_qcustomplot.cpp Debug/temp/moc/moc_appender.cpp Debug/temp/moc/moc_appenderskeleton.cpp Debug/temp/moc/moc_consoleappender.cpp Debug/temp/moc/moc_dailyrollingfileappender.cpp Debug/temp/moc/moc_fileappender.cpp Debug/temp/moc/moc_configuratorhelper.cpp Debug/temp/moc/moc_logobject.cpp Debug/temp/moc/moc_layout.cpp Debug/temp/moc/moc_logger.cpp Debug/temp/moc/moc_patternlayout.cpp Debug/temp/moc/moc_rollingfileappender.cpp Debug/temp/moc/moc_simplelayout.cpp Debug/temp/moc/moc_filter.cpp Debug/temp/moc/moc_ttcclayout.cpp Debug/temp/moc/moc_writerappender.cpp Debug/temp/moc/moc_debugappender.cpp Debug/temp/moc/moc_denyallfilter.cpp Debug/temp/moc/moc_nullappender.cpp Debug/temp/moc/moc_levelmatchfilter.cpp Debug/temp/moc/moc_levelrangefilter.cpp Debug/temp/moc/moc_listappender.cpp Debug/temp/moc/moc_stringmatchfilter.cpp Debug/temp/moc/moc_AddRecord.cpp Debug/temp/moc/moc_ClusterPage.cpp Debug/temp/moc/moc_GenderDelegate.cpp Debug/temp/moc/moc_LevelDelegate.cpp Debug/temp/moc/moc_MaxPowerDelegate.cpp Debug/temp/moc/moc_TeamDelegate.cpp Debug/temp/moc/moc_DistanceDelegate.cpp Debug/temp/moc/moc_StageDelegate.cpp Debug/temp/moc/moc_EnvDelegate.cpp Debug/temp/moc/moc_StrokeDelegate.cpp Debug/temp/moc/moc_StrokeItemDelegate.cpp Debug/temp/moc/moc_ViewBase.cpp Debug/temp/moc/moc_WeightDelegate.cpp Debug/temp/moc/moc_ZpSqlQueryModel.cpp Debug/temp/moc/moc_DeleteRecord.cpp Debug/temp/moc/moc_FormData.cpp Debug/temp/moc/moc_PersonalChart.cpp Debug/temp/moc/moc_StatisticsPage.cpp Debug/temp/moc/moc_TableView.cpp Debug/temp/moc/moc_ViewRecord.cpp Debug/temp/moc/moc_DashBoard.cpp Debug/temp/moc/moc_Base.cpp Debug/temp/moc/moc_DB.cpp Debug/temp/moc/moc_Person.cpp Debug/temp/moc/moc_Record.cpp Debug/temp/moc/moc_TableMess.cpp Debug/temp/moc/moc_Theme.cpp Debug/temp/moc/moc_Tools.cpp Debug/temp/moc/moc_Settings.cpp Debug/temp/moc/moc_Open.cpp Debug/temp/moc/moc_Save.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) Debug/temp/moc/moc_mainwindow.cpp Debug/temp/moc/moc_xlsxdocument.cpp Debug/temp/moc/moc_qcustomplot.cpp Debug/temp/moc/moc_appender.cpp Debug/temp/moc/moc_appenderskeleton.cpp Debug/temp/moc/moc_consoleappender.cpp Debug/temp/moc/moc_dailyrollingfileappender.cpp Debug/temp/moc/moc_fileappender.cpp Debug/temp/moc/moc_configuratorhelper.cpp Debug/temp/moc/moc_logobject.cpp Debug/temp/moc/moc_layout.cpp Debug/temp/moc/moc_logger.cpp Debug/temp/moc/moc_patternlayout.cpp Debug/temp/moc/moc_rollingfileappender.cpp Debug/temp/moc/moc_simplelayout.cpp Debug/temp/moc/moc_filter.cpp Debug/temp/moc/moc_ttcclayout.cpp Debug/temp/moc/moc_writerappender.cpp Debug/temp/moc/moc_debugappender.cpp Debug/temp/moc/moc_denyallfilter.cpp Debug/temp/moc/moc_nullappender.cpp Debug/temp/moc/moc_levelmatchfilter.cpp Debug/temp/moc/moc_levelrangefilter.cpp Debug/temp/moc/moc_listappender.cpp Debug/temp/moc/moc_stringmatchfilter.cpp Debug/temp/moc/moc_AddRecord.cpp Debug/temp/moc/moc_ClusterPage.cpp Debug/temp/moc/moc_GenderDelegate.cpp Debug/temp/moc/moc_LevelDelegate.cpp Debug/temp/moc/moc_MaxPowerDelegate.cpp Debug/temp/moc/moc_TeamDelegate.cpp Debug/temp/moc/moc_DistanceDelegate.cpp Debug/temp/moc/moc_StageDelegate.cpp Debug/temp/moc/moc_EnvDelegate.cpp Debug/temp/moc/moc_StrokeDelegate.cpp Debug/temp/moc/moc_StrokeItemDelegate.cpp Debug/temp/moc/moc_ViewBase.cpp Debug/temp/moc/moc_WeightDelegate.cpp Debug/temp/moc/moc_ZpSqlQueryModel.cpp Debug/temp/moc/moc_DeleteRecord.cpp Debug/temp/moc/moc_FormData.cpp Debug/temp/moc/moc_PersonalChart.cpp Debug/temp/moc/moc_StatisticsPage.cpp Debug/temp/moc/moc_TableView.cpp Debug/temp/moc/moc_ViewRecord.cpp Debug/temp/moc/moc_DashBoard.cpp Debug/temp/moc/moc_Base.cpp Debug/temp/moc/moc_DB.cpp Debug/temp/moc/moc_Person.cpp Debug/temp/moc/moc_Record.cpp Debug/temp/moc/moc_TableMess.cpp Debug/temp/moc/moc_Theme.cpp Debug/temp/moc/moc_Settings.cpp
+	-$(DEL_FILE) Debug/temp/moc/moc_mainwindow.cpp Debug/temp/moc/moc_xlsxdocument.cpp Debug/temp/moc/moc_qcustomplot.cpp Debug/temp/moc/moc_appender.cpp Debug/temp/moc/moc_appenderskeleton.cpp Debug/temp/moc/moc_consoleappender.cpp Debug/temp/moc/moc_dailyrollingfileappender.cpp Debug/temp/moc/moc_fileappender.cpp Debug/temp/moc/moc_configuratorhelper.cpp Debug/temp/moc/moc_logobject.cpp Debug/temp/moc/moc_layout.cpp Debug/temp/moc/moc_logger.cpp Debug/temp/moc/moc_patternlayout.cpp Debug/temp/moc/moc_rollingfileappender.cpp Debug/temp/moc/moc_simplelayout.cpp Debug/temp/moc/moc_filter.cpp Debug/temp/moc/moc_ttcclayout.cpp Debug/temp/moc/moc_writerappender.cpp Debug/temp/moc/moc_debugappender.cpp Debug/temp/moc/moc_denyallfilter.cpp Debug/temp/moc/moc_nullappender.cpp Debug/temp/moc/moc_levelmatchfilter.cpp Debug/temp/moc/moc_levelrangefilter.cpp Debug/temp/moc/moc_listappender.cpp Debug/temp/moc/moc_stringmatchfilter.cpp Debug/temp/moc/moc_AddRecord.cpp Debug/temp/moc/moc_ClusterPage.cpp Debug/temp/moc/moc_GenderDelegate.cpp Debug/temp/moc/moc_LevelDelegate.cpp Debug/temp/moc/moc_MaxPowerDelegate.cpp Debug/temp/moc/moc_TeamDelegate.cpp Debug/temp/moc/moc_DistanceDelegate.cpp Debug/temp/moc/moc_StageDelegate.cpp Debug/temp/moc/moc_EnvDelegate.cpp Debug/temp/moc/moc_StrokeDelegate.cpp Debug/temp/moc/moc_StrokeItemDelegate.cpp Debug/temp/moc/moc_ViewBase.cpp Debug/temp/moc/moc_WeightDelegate.cpp Debug/temp/moc/moc_ZpSqlQueryModel.cpp Debug/temp/moc/moc_DeleteRecord.cpp Debug/temp/moc/moc_FormData.cpp Debug/temp/moc/moc_PersonalChart.cpp Debug/temp/moc/moc_StatisticsPage.cpp Debug/temp/moc/moc_TableView.cpp Debug/temp/moc/moc_ViewRecord.cpp Debug/temp/moc/moc_DashBoard.cpp Debug/temp/moc/moc_Base.cpp Debug/temp/moc/moc_DB.cpp Debug/temp/moc/moc_Person.cpp Debug/temp/moc/moc_Record.cpp Debug/temp/moc/moc_TableMess.cpp Debug/temp/moc/moc_Theme.cpp Debug/temp/moc/moc_Tools.cpp Debug/temp/moc/moc_Settings.cpp Debug/temp/moc/moc_Open.cpp Debug/temp/moc/moc_Save.cpp
 Debug/temp/moc/moc_mainwindow.cpp: mainwindow.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
@@ -1965,6 +1986,11 @@ Debug/temp/moc/moc_Person.cpp: DB/Person.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlerror.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlQuery \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlquery.h \
+		Common/CustomType.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QMap \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qmap.h \
 		Debug/temp/moc/moc_predefs.h \
 		../../../../Opt/Qt/5.15.2/clang_64/bin/moc
 	/Users/guozeping/Opt/Qt/5.15.2/clang_64/bin/moc $(DEFINES) --include /Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/Debug/temp/moc/moc_predefs.h -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/mkspecs/macx-clang -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs/xlsx -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs/customplot -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtDataVisualization.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCharts.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtPrintSupport.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/5.15.2 -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/5.15.2/QtGui -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtWebSockets.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtNetwork.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/5.15.2 -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/5.15.2/QtCore -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib DB/Person.h -o Debug/temp/moc/moc_Person.cpp
@@ -2043,12 +2069,73 @@ Debug/temp/moc/moc_Theme.cpp: Common/Theme.h \
 		../../../../Opt/Qt/5.15.2/clang_64/bin/moc
 	/Users/guozeping/Opt/Qt/5.15.2/clang_64/bin/moc $(DEFINES) --include /Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/Debug/temp/moc/moc_predefs.h -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/mkspecs/macx-clang -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs/xlsx -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs/customplot -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtDataVisualization.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCharts.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtPrintSupport.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/5.15.2 -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/5.15.2/QtGui -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtWebSockets.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtNetwork.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/5.15.2 -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/5.15.2/QtCore -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib Common/Theme.h -o Debug/temp/moc/moc_Theme.cpp
 
+Debug/temp/moc/moc_Tools.cpp: Common/Tools.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
+		Debug/temp/moc/moc_predefs.h \
+		../../../../Opt/Qt/5.15.2/clang_64/bin/moc
+	/Users/guozeping/Opt/Qt/5.15.2/clang_64/bin/moc $(DEFINES) --include /Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/Debug/temp/moc/moc_predefs.h -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/mkspecs/macx-clang -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs/xlsx -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs/customplot -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtDataVisualization.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCharts.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtPrintSupport.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/5.15.2 -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/5.15.2/QtGui -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtWebSockets.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtNetwork.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/5.15.2 -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/5.15.2/QtCore -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib Common/Tools.h -o Debug/temp/moc/moc_Tools.cpp
+
 Debug/temp/moc/moc_Settings.cpp: Settings/Settings.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
 		Debug/temp/moc/moc_predefs.h \
 		../../../../Opt/Qt/5.15.2/clang_64/bin/moc
 	/Users/guozeping/Opt/Qt/5.15.2/clang_64/bin/moc $(DEFINES) --include /Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/Debug/temp/moc/moc_predefs.h -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/mkspecs/macx-clang -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs/xlsx -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs/customplot -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtDataVisualization.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCharts.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtPrintSupport.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/5.15.2 -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/5.15.2/QtGui -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtWebSockets.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtNetwork.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/5.15.2 -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/5.15.2/QtCore -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib Settings/Settings.h -o Debug/temp/moc/moc_Settings.cpp
+
+Debug/temp/moc/moc_Open.cpp: Excel/Open.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		Debug/temp/moc/moc_predefs.h \
+		../../../../Opt/Qt/5.15.2/clang_64/bin/moc
+	/Users/guozeping/Opt/Qt/5.15.2/clang_64/bin/moc $(DEFINES) --include /Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/Debug/temp/moc/moc_predefs.h -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/mkspecs/macx-clang -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs/xlsx -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs/customplot -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtDataVisualization.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCharts.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtPrintSupport.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/5.15.2 -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/5.15.2/QtGui -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtWebSockets.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtNetwork.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/5.15.2 -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/5.15.2/QtCore -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib Excel/Open.h -o Debug/temp/moc/moc_Open.cpp
+
+Debug/temp/moc/moc_Save.cpp: Excel/Save.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QTableWidget \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qtablewidget.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QStandardPaths \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qstandardpaths.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QPoint \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qpoint.h \
+		libs/xlsx/xlsxdocument.h \
+		libs/xlsx/xlsxglobal.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QtGlobal \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qglobal.h \
+		libs/xlsx/xlsxformat.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QFont \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qfont.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QByteArray \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qbytearray.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QList \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qlist.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QExplicitlySharedDataPointer \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qshareddata.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QVariant \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qvariant.h \
+		libs/xlsx/xlsxworksheet.h \
+		libs/xlsx/xlsxabstractsheet.h \
+		libs/xlsx/xlsxabstractooxmlfile.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QStringList \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qstringlist.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QSharedPointer \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qsharedpointer.h \
+		libs/xlsx/xlsxcell.h \
+		libs/xlsx/xlsxcellrange.h \
+		libs/xlsx/xlsxcellreference.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QMap \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qmap.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QPointF \
+		Debug/temp/moc/moc_predefs.h \
+		../../../../Opt/Qt/5.15.2/clang_64/bin/moc
+	/Users/guozeping/Opt/Qt/5.15.2/clang_64/bin/moc $(DEFINES) --include /Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/Debug/temp/moc/moc_predefs.h -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/mkspecs/macx-clang -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs/xlsx -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs/customplot -I/Users/guozeping/Documents/WorkSpace/Qt/SwimmingReload/libs -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtDataVisualization.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCharts.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtPrintSupport.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/5.15.2 -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/5.15.2/QtGui -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtWebSockets.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtNetwork.framework/Headers -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/5.15.2 -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/5.15.2/QtCore -I/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/guozeping/Opt/Qt/5.15.2/clang_64/lib Excel/Save.h -o Debug/temp/moc/moc_Save.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -3867,7 +3954,9 @@ Debug/temp/obj/AddRecord.o: FormData/AddRecord.cpp FormData/AddRecord.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QMutexLocker \
 		DB/Record.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlDatabase \
-		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlError
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlError \
+		DB/Person.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QDate
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/AddRecord.o FormData/AddRecord.cpp
 
 Debug/temp/obj/ClusterPage.o: FormData/ClusterPage.cpp FormData/ClusterPage.h \
@@ -3961,7 +4050,24 @@ Debug/temp/obj/DistanceDelegate.o: FormData/Components/DistanceDelegate.cpp Form
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/DistanceDelegate.o FormData/Components/DistanceDelegate.cpp
 
-Debug/temp/obj/StageDelegate.o: FormData/Components/StageDelegate.cpp 
+Debug/temp/obj/StageDelegate.o: FormData/Components/StageDelegate.cpp FormData/Components/StageDelegate.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QStyledItemDelegate \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qstyleditemdelegate.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QComboBox \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qcombobox.h \
+		Common/TableMess.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QSettings \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qsettings.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QFileInfo \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qfileinfo.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QTextCodec \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qtextcodec.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QCoreApplication \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qcoreapplication.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/StageDelegate.o FormData/Components/StageDelegate.cpp
 
 Debug/temp/obj/EnvDelegate.o: FormData/Components/EnvDelegate.cpp FormData/Components/EnvDelegate.h \
@@ -3970,7 +4076,18 @@ Debug/temp/obj/EnvDelegate.o: FormData/Components/EnvDelegate.cpp FormData/Compo
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QStyledItemDelegate \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qstyleditemdelegate.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QComboBox \
-		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qcombobox.h
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qcombobox.h \
+		Common/TableMess.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QSettings \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qsettings.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QFileInfo \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qfileinfo.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QTextCodec \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qtextcodec.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QCoreApplication \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qcoreapplication.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/EnvDelegate.o FormData/Components/EnvDelegate.cpp
 
 Debug/temp/obj/StrokeDelegate.o: FormData/Components/StrokeDelegate.cpp FormData/Components/StrokeDelegate.h \
@@ -3983,8 +4100,15 @@ Debug/temp/obj/StrokeDelegate.o: FormData/Components/StrokeDelegate.cpp FormData
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		FormData/Components/StrokeItemDelegate.h \
-		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QStandardItem \
-		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		Common/TableMess.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QSettings \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qsettings.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QFileInfo \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qfileinfo.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QTextCodec \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qtextcodec.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QCoreApplication \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qcoreapplication.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/StrokeDelegate.o FormData/Components/StrokeDelegate.cpp
@@ -3996,17 +4120,66 @@ Debug/temp/obj/StrokeItemDelegate.o: FormData/Components/StrokeItemDelegate.cpp 
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qstyleditemdelegate.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QComboBox \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qcombobox.h \
+		Common/TableMess.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QSettings \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qsettings.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QFileInfo \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qfileinfo.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QTextCodec \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qtextcodec.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QCoreApplication \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qcoreapplication.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		FormData/Components/StrokeDelegate.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QString \
-		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qstring.h \
-		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QDebug \
-		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qdebug.h
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qstring.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/StrokeItemDelegate.o FormData/Components/StrokeItemDelegate.cpp
 
 Debug/temp/obj/ViewBase.o: FormData/Components/ViewBase.cpp FormData/Components/ViewBase.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		Debug/temp/ui/ui_ViewBase.h
+		Debug/temp/ui/ui_ViewBase.h \
+		FormData/TableView.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QRegExp \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qregexp.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QStandardItem \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QStandardItemModel \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QItemSelectionModel \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qitemselectionmodel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QSortFilterProxyModel \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qsortfilterproxymodel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QTableView \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qtableview.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QModelIndex \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QMap \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qmap.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QHeaderView \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qheaderview.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlTableModel \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqltablemodel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlRelationalTableModel \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlRelationalDelegate \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QDataWidgetMapper \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qdatawidgetmapper.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QDateTime \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
+		Common/CustomType.h \
+		FormData/Components/ZpSqlQueryModel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlQueryModel \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlQuery \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlquery.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/ViewBase.o FormData/Components/ViewBase.cpp
 
 Debug/temp/obj/WeightDelegate.o: FormData/Components/WeightDelegate.cpp FormData/Components/WeightDelegate.h \
@@ -4144,6 +4317,9 @@ Debug/temp/obj/FormData.o: FormData/FormData.cpp FormData/FormData.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qcoreapplication.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		Common/Tools.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		FormData/AddRecord.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
@@ -4182,7 +4358,6 @@ Debug/temp/obj/FormData.o: FormData/FormData.cpp FormData/FormData.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlRelationalDelegate \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QDateTime \
-		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
 		Common/CustomType.h \
 		FormData/Components/ZpSqlQueryModel.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlQueryModel \
@@ -4191,7 +4366,61 @@ Debug/temp/obj/FormData.o: FormData/FormData.cpp FormData/FormData.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlquery.h \
 		FormData/ClusterPage.h \
 		FormData/StatisticsPage.h \
-		FormData/PersonalChart.h
+		FormData/PersonalChart.h \
+		Excel/Save.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QTableWidget \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qtablewidget.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QStandardPaths \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qstandardpaths.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QPoint \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qpoint.h \
+		libs/xlsx/xlsxdocument.h \
+		libs/xlsx/xlsxglobal.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QtGlobal \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qglobal.h \
+		libs/xlsx/xlsxformat.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QFont \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qfont.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QByteArray \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qbytearray.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QList \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qlist.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QExplicitlySharedDataPointer \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qshareddata.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QVariant \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qvariant.h \
+		libs/xlsx/xlsxworksheet.h \
+		libs/xlsx/xlsxabstractsheet.h \
+		libs/xlsx/xlsxabstractooxmlfile.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QStringList \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qstringlist.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QSharedPointer \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qsharedpointer.h \
+		libs/xlsx/xlsxcell.h \
+		libs/xlsx/xlsxcellrange.h \
+		libs/xlsx/xlsxcellreference.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QPointF \
+		DB/DBPool.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QtSql \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qtsqlglobal.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqldriver.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqldriverplugin.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlfield.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlindex.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlresult.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QQueue \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qqueue.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QMutex \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qmutex.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QMutexLocker
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/FormData.o FormData/FormData.cpp
 
 Debug/temp/obj/PersonalChart.o: FormData/PersonalChart.cpp FormData/PersonalChart.h \
@@ -4288,7 +4517,11 @@ Debug/temp/obj/TableView.o: FormData/TableView.cpp FormData/TableView.h \
 		FormData/Components/LevelDelegate.h \
 		FormData/Components/MaxPowerDelegate.h \
 		FormData/Components/TeamDelegate.h \
-		FormData/Components/DistanceDelegate.h
+		FormData/Components/DistanceDelegate.h \
+		FormData/Components/EnvDelegate.h \
+		FormData/Components/StageDelegate.h \
+		FormData/Components/StrokeDelegate.h \
+		FormData/Components/StrokeItemDelegate.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/TableView.o FormData/TableView.cpp
 
 Debug/temp/obj/ViewRecord.o: FormData/ViewRecord.cpp FormData/ViewRecord.h \
@@ -4443,6 +4676,11 @@ Debug/temp/obj/Person.o: DB/Person.cpp DB/Person.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlerror.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlQuery \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlquery.h \
+		Common/CustomType.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QMap \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qmap.h \
 		DB/DBPool.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QtSql \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qtsqlglobal.h \
@@ -4459,8 +4697,6 @@ Debug/temp/obj/Person.o: DB/Person.cpp DB/Person.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qtsqlversion.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QQueue \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qqueue.h \
-		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QString \
-		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QMutex \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qmutex.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QMutexLocker \
@@ -4505,6 +4741,9 @@ Debug/temp/obj/Record.o: DB/Record.cpp DB/Record.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QSettings \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qsettings.h \
 		DB/Person.h \
+		Common/CustomType.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QMap \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qmap.h \
 		FormData/Components/ZpSqlQueryModel.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlQueryModel
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/Record.o DB/Record.cpp
@@ -4548,11 +4787,113 @@ Debug/temp/obj/Theme.o: Common/Theme.cpp Common/Theme.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qsettings.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/Theme.o Common/Theme.cpp
 
+Debug/temp/obj/Tools.o: Common/Tools.cpp Common/Tools.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QDate \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qdatetime.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/Tools.o Common/Tools.cpp
+
 Debug/temp/obj/Settings.o: Settings/Settings.cpp Settings/Settings.h \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
 		Debug/temp/ui/ui_Settings.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/Settings.o Settings/Settings.cpp
+
+Debug/temp/obj/Open.o: Excel/Open.cpp Excel/Open.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/Open.o Excel/Open.cpp
+
+Debug/temp/obj/Save.o: Excel/Save.cpp Excel/Save.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QFileDialog \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QTableWidget \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qtablewidget.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QStandardPaths \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qstandardpaths.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QPoint \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qpoint.h \
+		libs/xlsx/xlsxdocument.h \
+		libs/xlsx/xlsxglobal.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QtGlobal \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qglobal.h \
+		libs/xlsx/xlsxformat.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QFont \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qfont.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QColor \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qcolor.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QByteArray \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qbytearray.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QList \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qlist.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QExplicitlySharedDataPointer \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qshareddata.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QVariant \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qvariant.h \
+		libs/xlsx/xlsxworksheet.h \
+		libs/xlsx/xlsxabstractsheet.h \
+		libs/xlsx/xlsxabstractooxmlfile.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QStringList \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qstringlist.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QSharedPointer \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qsharedpointer.h \
+		libs/xlsx/xlsxcell.h \
+		libs/xlsx/xlsxcellrange.h \
+		libs/xlsx/xlsxcellreference.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QMap \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qmap.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QPointF \
+		Common/TableMess.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QSettings \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qsettings.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QFileInfo \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qfileinfo.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QTextCodec \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qtextcodec.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QCoreApplication \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qcoreapplication.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qdebug.h \
+		FormData/TableView.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QRegExp \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qregexp.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QStandardItem \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtGui.framework/Headers/QStandardItemModel \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QItemSelectionModel \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qitemselectionmodel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QSortFilterProxyModel \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qsortfilterproxymodel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QTableView \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qtableview.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QModelIndex \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QHeaderView \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qheaderview.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlTableModel \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqltablemodel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlRelationalTableModel \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlRelationalDelegate \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/QDataWidgetMapper \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtWidgets.framework/Headers/qdatawidgetmapper.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/QDateTime \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtCore.framework/Headers/qdatetime.h \
+		Common/CustomType.h \
+		FormData/Components/ZpSqlQueryModel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlQueryModel \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/QSqlQuery \
+		../../../../Opt/Qt/5.15.2/clang_64/lib/QtSql.framework/Headers/qsqlquery.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/Save.o Excel/Save.cpp
 
 Debug/temp/obj/qrc_res.o: Debug/temp/rcc/qrc_res.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/qrc_res.o Debug/temp/rcc/qrc_res.cpp
@@ -4713,8 +5054,17 @@ Debug/temp/obj/moc_TableMess.o: Debug/temp/moc/moc_TableMess.cpp
 Debug/temp/obj/moc_Theme.o: Debug/temp/moc/moc_Theme.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/moc_Theme.o Debug/temp/moc/moc_Theme.cpp
 
+Debug/temp/obj/moc_Tools.o: Debug/temp/moc/moc_Tools.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/moc_Tools.o Debug/temp/moc/moc_Tools.cpp
+
 Debug/temp/obj/moc_Settings.o: Debug/temp/moc/moc_Settings.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/moc_Settings.o Debug/temp/moc/moc_Settings.cpp
+
+Debug/temp/obj/moc_Open.o: Debug/temp/moc/moc_Open.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/moc_Open.o Debug/temp/moc/moc_Open.cpp
+
+Debug/temp/obj/moc_Save.o: Debug/temp/moc/moc_Save.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Debug/temp/obj/moc_Save.o Debug/temp/moc/moc_Save.cpp
 
 ####### Install
 

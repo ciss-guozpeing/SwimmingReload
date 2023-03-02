@@ -2,6 +2,7 @@
 #include "ui_FormData.h"
 
 #include "../../Common/TableMess.h"
+#include "../../Common/Tools.h"
 #include "AddRecord.h"
 #include "DeleteRecord.h"
 #include "ViewRecord.h"
@@ -10,6 +11,8 @@
 #include "StatisticsPage.h"
 #include "PersonalChart.h"
 #include "Components/ZpSqlQueryModel.h"
+#include "../Excel/Save.h"
+#include "../DB/DBPool.h"
 #include <QDebug>
 
 FormData::FormData(QWidget *parent) :
@@ -36,6 +39,7 @@ void FormData::initUI()
     ui->distance->addItems(tableMess->getDistanceItem());
     ui->stroke->addItems(tableMess->getStrokeItem());
     connect(ui->stroke,SIGNAL(currentTextChanged(const QString)),this,SLOT(on_resetStrokeItem(const QString)));
+    connect(ui->searchEdit,SIGNAL(textChanged(const QString)),this,SLOT(on_searchText(const QString)));
 
     //
     ui->calculateWidget->hide();
@@ -109,6 +113,9 @@ void FormData::on_exportRecordBtn_clicked()
 void FormData::on_exportTemplate_clicked()
 {
     qDebug() << QString("导出模版");
+    Save* save = new Save;
+    save->exportTemplate();
+    delete save;
 }
 
 
@@ -155,6 +162,17 @@ void FormData::on_clusterBtn_clicked()
 void FormData::on_asSaveBtn_clicked()
 {
     qDebug() << QString("另存为");
+    TableView* tableView = TableView::getInstance();
+    Save* save = new Save;
+    save->asSave(tableView->getCurTableData());
+    delete save;
+}
+
+void FormData::on_searchBtn_clicked()
+{
+    TableView* tableView = TableView::getInstance();
+//    tableView->model()->setFiflter();
+
 }
 
 void FormData::on_resetStrokeItem(QString stroke)
@@ -167,4 +185,19 @@ void FormData::on_resetStrokeItem(QString stroke)
         TableMess* tableMess= TableMess::getInstance();
         ui->strokeItem->addItems(tableMess->getStrokeIItem()[stroke]);
     }
+}
+
+void FormData::on_searchText(QString value)
+{
+    Tools* tools = Tools::getInstance();
+    TableView* tableView = TableView::getInstance();
+    QSqlQuery query = QSqlQuery(ConnectionPool::openConnection());
+    query.prepare("select personId,r.id,name,gender,weight,birthday,level,team,stage,stroke,strokeItem,distance,"
+                  "environment,maxPower1,maxPower2,maxPower3,maxPower,relPower,percentage,contributionRate,"
+                  "score,clusterSerial from person as p inner join record as r  on p.name like ? and r.createAt=? and r.personID=p.id");
+    query.addBindValue(QString("%1%").arg(value));
+    query.addBindValue(QString("%2").arg(tools->getCurDate()));
+    query.exec();
+    tableView->model()->setQuery(query);
+
 }

@@ -51,8 +51,13 @@ public:
 
     ZpSqlQueryModel* model();
     QItemSelectionModel* selectModel();
+
+    QVector<QStringList> getCurTableData();
+
     QVector<personData> getPersons();
     QVector<recordData> getRecords();
+
+
 };
 
 #endif // TABLEVIEW_H

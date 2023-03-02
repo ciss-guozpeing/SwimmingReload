@@ -68,8 +68,8 @@ public:
     QVBoxLayout *verticalLayout;
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout_3;
-    QLineEdit *lineEdit;
-    QPushButton *pushButton;
+    QLineEdit *searchEdit;
+    QPushButton *searchBtn;
     QHBoxLayout *horizontalLayout_5;
     QGroupBox *groupBox_2;
     QHBoxLayout *horizontalLayout_6;
@@ -280,15 +280,15 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        lineEdit = new QLineEdit(groupBox);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        searchEdit = new QLineEdit(groupBox);
+        searchEdit->setObjectName(QString::fromUtf8("searchEdit"));
 
-        horizontalLayout_3->addWidget(lineEdit);
+        horizontalLayout_3->addWidget(searchEdit);
 
-        pushButton = new QPushButton(groupBox);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        searchBtn = new QPushButton(groupBox);
+        searchBtn->setObjectName(QString::fromUtf8("searchBtn"));
 
-        horizontalLayout_3->addWidget(pushButton);
+        horizontalLayout_3->addWidget(searchBtn);
 
 
         verticalLayout->addLayout(horizontalLayout_3);
@@ -484,8 +484,8 @@ public:
         label_10->setText(QCoreApplication::translate("FormData", "\346\265\213\350\257\225\347\216\257\345\242\203", nullptr));
         env->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
 
-        lineEdit->setPlaceholderText(QCoreApplication::translate("FormData", "\346\220\234\347\264\242\345\247\223\345\220\215...", nullptr));
-        pushButton->setText(QCoreApplication::translate("FormData", "\346\220\234\347\264\242", nullptr));
+        searchEdit->setPlaceholderText(QCoreApplication::translate("FormData", "\346\220\234\347\264\242\345\247\223\345\220\215...", nullptr));
+        searchBtn->setText(QCoreApplication::translate("FormData", "\346\220\234\347\264\242", nullptr));
         groupBox_2->setTitle(QCoreApplication::translate("FormData", "\345\216\237\345\247\213\350\241\250\346\223\215\344\275\234", nullptr));
         openExcelBtn->setText(QCoreApplication::translate("FormData", "\346\211\223\345\274\200\346\226\207\344\273\266", nullptr));
         refreshBtn->setText(QCoreApplication::translate("FormData", "\345\210\267\346\226\260", nullptr));
