@@ -7,6 +7,8 @@
 #include "../../Common/TableMess.h"
 #include "../DB/DBPool.h"
 #include "../DB/Record.h"
+#include "../DB/Person.h"
+#include <QDate>
 #include <QDebug>
 
 static AddRecord* INSTANCE=nullptr;
@@ -22,7 +24,6 @@ AddRecord::AddRecord(QWidget *parent) :
 
     //
     TableMess* tableMess= TableMess::getInstance();
-    qDebug() << tableMess->getLevelItem();
     ui->level->addItems(tableMess->getLevelItem());
     ui->team->addItems(tableMess->getTeamItem());
     ui->stage->addItems(tableMess->getStageItem());
@@ -30,6 +31,7 @@ AddRecord::AddRecord(QWidget *parent) :
     ui->distance->addItems(tableMess->getDistanceItem());
     ui->stroke->addItems(tableMess->getStrokeItem());
     connect(ui->stroke,SIGNAL(currentTextChanged(const QString)),this,SLOT(on_resetStrokeItem(const QString)));
+    connect(ui->name,SIGNAL(textChanged(const QString)),this,SLOT(on_findDefaultPersonMess(const QString)));
 }
 
 AddRecord::~AddRecord()
@@ -92,6 +94,16 @@ void AddRecord::on_resetStrokeItem(QString stroke)
         TableMess* tableMess= TableMess::getInstance();
         ui->strokeItem->addItems(tableMess->getStrokeIItem()[stroke]);
     }
+}
+
+void AddRecord::on_findDefaultPersonMess(QString name)
+{
+    QString gender = getGender(ui->man->isChecked(),ui->woman->isChecked());
+    Person* person = new Person;
+    QMap<QString,QString> personMess = person->getPerson(name,gender);
+    ui->weight->setValue(personMess["weight"].toDouble());
+    ui->birthday->setDate(QDate::fromString(personMess["birthday"],"yyyy/M/d"));
+
 }
 
 QMap<QString,QString>AddRecord::getTableRecord()

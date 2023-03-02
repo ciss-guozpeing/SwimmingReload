@@ -30,4 +30,11 @@ typedef struct recordData{
 
 } recordData;
 
+typedef struct dbReturnData{
+    int id;
+    int code;
+    QMap<QString,QString> data;
+    QString mess;
+} dbReturnData;
+
 #endif // CUSTOMTYPE_H

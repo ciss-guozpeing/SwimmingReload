@@ -27,6 +27,7 @@ QWidget* StrokeItemDelegate::createEditor(QWidget* parent, const QStyleOptionVie
     QComboBox* editor = new QComboBox(parent);
 
     editor->addItems(strokeDelgegate->getStrokeIItem());
+
     return editor;
 }
 
@@ -35,7 +36,6 @@ void StrokeItemDelegate::setModelData(QWidget *editor, QAbstractItemModel *model
     QComboBox* comBox = static_cast<QComboBox*> (editor);
     // 更新表格
     model->setData(index,comBox->currentText());
-
 }
 
 

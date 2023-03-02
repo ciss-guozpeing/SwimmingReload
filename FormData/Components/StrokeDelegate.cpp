@@ -1,7 +1,6 @@
 ﻿#include "StrokeDelegate.h"
 
 #include "../Common/TableMess.h"
-#include
 
 static StrokeDelegate* INSTANCE=nullptr;
 

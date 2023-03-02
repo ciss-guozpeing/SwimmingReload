@@ -29,7 +29,7 @@ public:
 
 public slots:
         void on_resetStrokeItem(QString stroke);
-
+        void on_findDefaultPersonMess(QString name);
 private:
     Ui::AddRecord *ui;
 };

@@ -15,7 +15,7 @@ public:
     explicit ViewBase(QWidget *parent = nullptr);
     ~ViewBase();
 
-    void setViewBase();
+    void setViewBase(int rowIndex);
 private:
     Ui::ViewBase *ui;
 };

@@ -31,14 +31,10 @@ void ViewRecord::viewTableRecord()
     for(int i=0;i<rowsIndex.count();i++){
         int rowIndex = rowsIndex.at(rowsIndex.count() - (i+1)).row();
         QString redocrdId = tableView->model()->record(rowIndex).value("id").toString();
+        ViewBase* viewBase = new ViewBase;
+        viewBase->setViewBase(rowIndex);
+        zpFlowLayout->addWidget(viewBase);
     }
-    for (int i=0; i<20; i++){
-            ViewBase* viewBase = new ViewBase;
-                zpFlowLayout->addWidget(viewBase);
-    }
-
-
-
 
     ui->scrollAreaWidgetContents->setLayout(zpFlowLayout);
 }

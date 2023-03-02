@@ -93,6 +93,7 @@ TableView* TableView::getInstance()
 
 ZpSqlQueryModel* TableView::model()
 {
+
     return m_zpSqlQueryModel;
 }
 
