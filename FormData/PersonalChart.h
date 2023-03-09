@@ -14,6 +14,7 @@ class PersonalChart : public QWidget
 public:
     explicit PersonalChart(QWidget *parent = nullptr);
     ~PersonalChart();
+    static PersonalChart* getInstance();
 
 private:
     Ui::PersonalChart *ui;

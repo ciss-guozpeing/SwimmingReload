@@ -76,6 +76,25 @@ bool ZpSqlQueryModel::setData(const QModelIndex &index, const QVariant &value, i
     if(index.column() == 15){
         ret = setMaxPower3(recordId, value.toString());
     }
+    if(index.column() == 16){
+        ret = setMaxPower(recordId, value.toString());
+    }
+    if(index.column() == 17){
+        ret = setRelPower(recordId, value.toString());
+    }
+    if(index.column() == 18){
+        ret = setPercentage(recordId, value.toString());
+    }
+    if(index.column() == 19){
+        ret = setContributionRate(recordId, value.toString());
+    }
+    if(index.column() == 20){
+        ret = setClusterSerial(recordId, value.toString());
+    }
+    if(index.column() == 21){
+        ret = setScore(recordId, value.toString());
+    }
+
     refresh();
 
     return ret;
@@ -86,7 +105,7 @@ Qt::ItemFlags ZpSqlQueryModel::flags(const QModelIndex &index) const
 {
     Qt::ItemFlags flags = QSqlQueryModel::flags(index);
 
-    for(int i=0; i<=15; i++){
+    for(int i=0; i<=15 ; i++){
         if(i!=1 && i!=0){
             if (index.column() == i){
                 flags |= Qt::ItemIsEditable;
@@ -309,6 +328,83 @@ bool ZpSqlQueryModel::setMaxPower3(int id, QString value)
     qDebug() << "设置最大力3";
     QSqlQuery query = QSqlQuery(ConnectionPool::openConnection());
     QString sql = QString("update record set maxPower3 = '%1' where id = '%2'").arg(value,QString::number(id));
+    if(query.prepare(sql)){
+        qDebug() << "11111";
+    } else {
+        qDebug() << "12221";
+    }
+    return query.exec();
+}
+
+bool ZpSqlQueryModel::setMaxPower(int id, QString value)
+{
+    qDebug() << "设置最大力";
+    QSqlQuery query = QSqlQuery(ConnectionPool::openConnection());
+    QString sql = QString("update record set maxPower = '%1' where id = '%2'").arg(value,QString::number(id));
+    if(query.prepare(sql)){
+        qDebug() << "11111";
+    } else {
+        qDebug() << "12221";
+    }
+    return query.exec();
+}
+
+bool ZpSqlQueryModel::setRelPower(int id, QString value)
+{
+    qDebug() << "设置相对力";
+    QSqlQuery query = QSqlQuery(ConnectionPool::openConnection());
+    QString sql = QString("update record set relPower = '%1' where id = '%2'").arg(value,QString::number(id));
+    if(query.prepare(sql)){
+        qDebug() << "11111";
+    } else {
+        qDebug() << "12221";
+    }
+    return query.exec();
+}
+
+bool ZpSqlQueryModel::setPercentage(int id, QString value)
+{
+    qDebug() << "设置百分比";
+    QSqlQuery query = QSqlQuery(ConnectionPool::openConnection());
+    QString sql = QString("update record set percentage = '%1' where id = '%2'").arg(value,QString::number(id));
+    if(query.prepare(sql)){
+        qDebug() << "11111";
+    } else {
+        qDebug() << "12221";
+    }
+    return query.exec();
+}
+
+bool ZpSqlQueryModel::setContributionRate(int id, QString value)
+{
+    qDebug() << "设置贡献率";
+    QSqlQuery query = QSqlQuery(ConnectionPool::openConnection());
+    QString sql = QString("update record set contributionRate = '%1' where id = '%2'").arg(value,QString::number(id));
+    if(query.prepare(sql)){
+        qDebug() << "11111";
+    } else {
+        qDebug() << "12221";
+    }
+    return query.exec();
+}
+
+bool ZpSqlQueryModel::setClusterSerial(int id, QString value)
+{
+    qDebug() << "设置贡献率";
+    QSqlQuery query = QSqlQuery(ConnectionPool::openConnection());
+    QString sql = QString("update record set clusterSerial = '%1' where id = '%2'").arg(value,QString::number(id));
+    if(query.prepare(sql)){
+        qDebug() << "11111";
+    } else {
+        qDebug() << "12221";
+    }
+    return query.exec();
+}
+bool ZpSqlQueryModel::setScore(int id, QString value)
+{
+    qDebug() << "设置贡献率";
+    QSqlQuery query = QSqlQuery(ConnectionPool::openConnection());
+    QString sql = QString("update record set score = '%1' where id = '%2'").arg(value,QString::number(id));
     if(query.prepare(sql)){
         qDebug() << "11111";
     } else {

@@ -49,6 +49,8 @@ private slots:
     void on_searchText(QString value);
 
 
+    void on_scoreFormBtn_clicked();
+
 private:
     Ui::FormData *ui;
 };

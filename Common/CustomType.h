@@ -14,6 +14,7 @@ typedef struct personData{
     QString stage;
     QString team;
     QMap<QString,QMap<QString,QVector<float>>> strokeItemToValue;
+    QString distance;
     QString env;
 } personData;
 
@@ -25,6 +26,7 @@ typedef struct recordData{
     QString level;
     QString stage;
     QString team;
+    QString distance;
     QString env;
     QString createAt;
 

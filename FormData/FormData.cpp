@@ -3,6 +3,7 @@
 
 #include "../../Common/TableMess.h"
 #include "../../Common/Tools.h"
+#include "../Common/Algorithm/Score.h"
 #include "AddRecord.h"
 #include "DeleteRecord.h"
 #include "ViewRecord.h"
@@ -58,12 +59,12 @@ void FormData::on_addRecordBtn_clicked()
 {
     qDebug() << QString("增加记录");
     AddRecord* addRecord = AddRecord::getInstance();
+
     int ret = addRecord->exec();
     QMap<QString,QString> record = addRecord->getTableRecord();
     bool isExists = addRecord->checkText(record["name"],record["gender"],record["weight"],
             record["stroke"],record["strokeItem"]);
 
-    qDebug() <<"asdfasdfsdfadsf" <<record["stroke"]<<record["strokeItem"];
     if (ret==QDialog::Accepted)
     {
         if(isExists){
@@ -76,7 +77,6 @@ void FormData::on_addRecordBtn_clicked()
     if (ret==QDialog::Rejected){
         addRecord->initUI();
     }
-
 }
 
 
@@ -107,6 +107,9 @@ void FormData::on_refreshBtn_clicked()
 void FormData::on_exportRecordBtn_clicked()
 {
     qDebug() << QString("导出记录");
+    Save* save = new Save;
+    save->exprotTableRecord();
+    delete save;
 }
 
 
@@ -144,6 +147,10 @@ void FormData::on_calculateSettingBtn_clicked()
 void FormData::on_calculateBtn_clicked()
 {
     qDebug() << QString("计算");
+    TableView* tableView = TableView::getInstance();
+    QVector<QStringList> records = tableView->getCurTableData();
+    tableView->createPersons(records);
+    tableView->getCalculate();
 }
 
 
@@ -170,9 +177,56 @@ void FormData::on_asSaveBtn_clicked()
 
 void FormData::on_searchBtn_clicked()
 {
+    Tools* tools = Tools::getInstance();
     TableView* tableView = TableView::getInstance();
-//    tableView->model()->setFiflter();
+    QStringList searchItem;
+    if(ui->gender->currentText()!="请选择"){
+        searchItem.append(QString("p.gender is '%1'").arg(ui->gender->currentText()));
+    }
+    if(ui->weight->text()!="0.00") {
+        searchItem.append(QString("p.weight is '%1'").arg(ui->weight->text()));
+    }
+    if(ui->level->currentText()!="请选择"){
+        searchItem.append(QString("r.level is '%1'").arg(ui->level->currentText()));
+    }
+    if(ui->team->currentText()!="请选择"){
+        searchItem.append(QString("r.team is '%1'").arg(ui->team->currentText()));
+    }
+    if(ui->stroke->currentText()!="请选择"){
+        searchItem.append(QString("r.stroke is '%1'").arg(ui->stroke->currentText()));
+    }
+    if(ui->strokeItem->currentText()!="请选择"){
+        searchItem.append(QString("r.strokeItem is '%1'").arg(ui->strokeItem->currentText()));
+    }
+    if(ui->distance->currentText()!="请选择"){
+        searchItem.append(QString("r.distance is '%1'").arg(ui->distance->currentText()));
+    }
+    if(ui->stage->currentText()!="请选择"){
+        searchItem.append(QString("r.stage is '%1'").arg(ui->stage->currentText()));
+    }
+    if(ui->env->currentText()!="请选择"){
+        searchItem.append(QString("r.env is '%1'").arg(ui->env->currentText()));
+    }
 
+    tools->getCurDate();
+
+    QSqlQuery query = QSqlQuery(ConnectionPool::openConnection());
+    QString sql = QString("select personId,r.id,name,gender,weight,birthday,level,team,stage,stroke,strokeItem,distance,"
+                          "environment,maxPower1,maxPower2,maxPower3,maxPower,relPower,percentage,contributionRate,"
+                          "score,clusterSerial from person as p inner join record as r on r.personID=p.id ");
+
+    if(searchItem.size() > 0){
+        sql.append(" and ");
+    }
+    for(int i=0; i<searchItem.size(); i++){
+        sql.append(searchItem.at(i));
+        if(i<(searchItem.size()-1))
+            sql.append(" and ");//添加连接符，最后一个不添加
+    }
+    sql.append(QString(" and createAt is '%1'").arg(tools->getCurDate()));
+
+    query.exec(sql);
+    tableView->model()->setQuery(query);
 }
 
 void FormData::on_resetStrokeItem(QString stroke)
@@ -201,3 +255,18 @@ void FormData::on_searchText(QString value)
     tableView->model()->setQuery(query);
 
 }
+
+void FormData::on_scoreFormBtn_clicked()
+{
+    QString filePath = QFileDialog::getOpenFileName(0, "Open xlsx file", QString(), "*.xlsx");
+    if(filePath!=""){
+        Score* score = new Score;
+        ui->scorePath->setText(filePath);
+//        score->setScoreCommonStandard();
+
+
+    } else {
+
+    }
+}
+

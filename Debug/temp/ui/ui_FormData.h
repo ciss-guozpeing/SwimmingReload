@@ -37,13 +37,13 @@ public:
     QGridLayout *gridLayout;
     QFormLayout *formLayout;
     QLabel *label_2;
-    QComboBox *comboBox;
+    QComboBox *gender;
     QFormLayout *formLayout_3;
     QLabel *label_4;
     QComboBox *level;
     QFormLayout *formLayout_2;
     QLabel *label_3;
-    QDoubleSpinBox *doubleSpinBox;
+    QDoubleSpinBox *weight;
     QFormLayout *formLayout_4;
     QLabel *label_5;
     QComboBox *team;
@@ -94,7 +94,20 @@ public:
     QWidget *calculateWidget;
     QVBoxLayout *verticalLayout_2;
     QGroupBox *groupBox_4;
+    QVBoxLayout *verticalLayout_4;
+    QHBoxLayout *horizontalLayout_2;
+    QFormLayout *formLayout_6;
+    QLabel *label;
+    QComboBox *comboBox;
+    QSpacerItem *horizontalSpacer_6;
+    QSpacerItem *verticalSpacer_3;
     QGroupBox *groupBox_5;
+    QVBoxLayout *verticalLayout_5;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *scoreFormBtn;
+    QLineEdit *scorePath;
+    QSpacerItem *horizontalSpacer_5;
+    QSpacerItem *horizontalSpacer_7;
 
     void setupUi(QWidget *FormData)
     {
@@ -118,13 +131,13 @@ public:
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label_2);
 
-        comboBox = new QComboBox(groupBox);
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        gender = new QComboBox(groupBox);
+        gender->addItem(QString());
+        gender->addItem(QString());
+        gender->addItem(QString());
+        gender->setObjectName(QString::fromUtf8("gender"));
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, comboBox);
+        formLayout->setWidget(0, QFormLayout::FieldRole, gender);
 
 
         gridLayout->addLayout(formLayout, 0, 0, 1, 1);
@@ -152,10 +165,10 @@ public:
 
         formLayout_2->setWidget(0, QFormLayout::LabelRole, label_3);
 
-        doubleSpinBox = new QDoubleSpinBox(groupBox);
-        doubleSpinBox->setObjectName(QString::fromUtf8("doubleSpinBox"));
+        weight = new QDoubleSpinBox(groupBox);
+        weight->setObjectName(QString::fromUtf8("weight"));
 
-        formLayout_2->setWidget(0, QFormLayout::FieldRole, doubleSpinBox);
+        formLayout_2->setWidget(0, QFormLayout::FieldRole, weight);
 
 
         gridLayout->addLayout(formLayout_2, 1, 0, 1, 1);
@@ -432,11 +445,68 @@ public:
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         groupBox_4 = new QGroupBox(calculateWidget);
         groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
+        verticalLayout_4 = new QVBoxLayout(groupBox_4);
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        formLayout_6 = new QFormLayout();
+        formLayout_6->setObjectName(QString::fromUtf8("formLayout_6"));
+        label = new QLabel(groupBox_4);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        formLayout_6->setWidget(0, QFormLayout::LabelRole, label);
+
+        comboBox = new QComboBox(groupBox_4);
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+
+        formLayout_6->setWidget(0, QFormLayout::FieldRole, comboBox);
+
+
+        horizontalLayout_2->addLayout(formLayout_6);
+
+        horizontalSpacer_6 = new QSpacerItem(393, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_6);
+
+
+        verticalLayout_4->addLayout(horizontalLayout_2);
+
+        verticalSpacer_3 = new QSpacerItem(20, 69, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_4->addItem(verticalSpacer_3);
+
 
         verticalLayout_2->addWidget(groupBox_4);
 
         groupBox_5 = new QGroupBox(calculateWidget);
         groupBox_5->setObjectName(QString::fromUtf8("groupBox_5"));
+        verticalLayout_5 = new QVBoxLayout(groupBox_5);
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        scoreFormBtn = new QPushButton(groupBox_5);
+        scoreFormBtn->setObjectName(QString::fromUtf8("scoreFormBtn"));
+
+        horizontalLayout->addWidget(scoreFormBtn);
+
+        scorePath = new QLineEdit(groupBox_5);
+        scorePath->setObjectName(QString::fromUtf8("scorePath"));
+        scorePath->setEnabled(true);
+        scorePath->setReadOnly(true);
+
+        horizontalLayout->addWidget(scorePath);
+
+
+        verticalLayout_5->addLayout(horizontalLayout);
+
+        horizontalSpacer_5 = new QSpacerItem(393, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        verticalLayout_5->addItem(horizontalSpacer_5);
+
+        horizontalSpacer_7 = new QSpacerItem(393, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        verticalLayout_5->addItem(horizontalSpacer_7);
+
 
         verticalLayout_2->addWidget(groupBox_5);
 
@@ -458,9 +528,9 @@ public:
         FormData->setWindowTitle(QCoreApplication::translate("FormData", "Form", nullptr));
         groupBox->setTitle(QCoreApplication::translate("FormData", "\346\220\234\347\264\242\351\200\211\351\241\271", nullptr));
         label_2->setText(QCoreApplication::translate("FormData", "\346\200\247\345\210\253", nullptr));
-        comboBox->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
-        comboBox->setItemText(1, QCoreApplication::translate("FormData", "\347\224\267", nullptr));
-        comboBox->setItemText(2, QCoreApplication::translate("FormData", "\345\245\263", nullptr));
+        gender->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
+        gender->setItemText(1, QCoreApplication::translate("FormData", "\347\224\267", nullptr));
+        gender->setItemText(2, QCoreApplication::translate("FormData", "\345\245\263", nullptr));
 
         label_4->setText(QCoreApplication::translate("FormData", "\350\277\220\345\212\250\347\255\211\347\272\247", nullptr));
         level->setItemText(0, QCoreApplication::translate("FormData", "\350\257\267\351\200\211\346\213\251", nullptr));
@@ -501,7 +571,10 @@ public:
         clusterBtn->setText(QCoreApplication::translate("FormData", "\350\201\232\347\261\273", nullptr));
         asSaveBtn->setText(QCoreApplication::translate("FormData", "\345\217\246\345\255\230\344\270\272", nullptr));
         groupBox_4->setTitle(QCoreApplication::translate("FormData", "\350\201\232\347\261\273\350\256\276\347\275\256", nullptr));
+        label->setText(QCoreApplication::translate("FormData", "\350\201\232\347\261\273\346\225\260", nullptr));
         groupBox_5->setTitle(QCoreApplication::translate("FormData", "\350\257\204\345\210\206\350\256\276\347\275\256", nullptr));
+        scoreFormBtn->setText(QCoreApplication::translate("FormData", "\350\257\204\345\210\206\350\241\250", nullptr));
+        scorePath->setPlaceholderText(QCoreApplication::translate("FormData", "\346\226\207\344\273\266\350\267\257\345\276\204...", nullptr));
     } // retranslateUi
 
 };

@@ -27,7 +27,6 @@ void ViewRecord::viewTableRecord()
     ZpFlowLayout* zpFlowLayout = new ZpFlowLayout;
     TableView* tableView = TableView::getInstance();
     QModelIndexList rowsIndex = tableView->selectModel()->selectedRows();
-    Record* record = new Record;
     for(int i=0;i<rowsIndex.count();i++){
         int rowIndex = rowsIndex.at(rowsIndex.count() - (i+1)).row();
         QString redocrdId = tableView->model()->record(rowIndex).value("id").toString();

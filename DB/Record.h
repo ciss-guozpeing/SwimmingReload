@@ -22,6 +22,10 @@ public:
     void deleteRecord(QString id);
 
     void selectRecord(QString id);
+
+    void getRecords(QString name, QString createAt);
+
+
 signals:
 
 };

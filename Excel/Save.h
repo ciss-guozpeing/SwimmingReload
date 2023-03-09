@@ -22,6 +22,7 @@ class Save: public QObject
 public:
     Save();
 
+    void exprotTableRecord();
     void exportTemplate();
     void asSave(QVector<QStringList> tableData);
 };

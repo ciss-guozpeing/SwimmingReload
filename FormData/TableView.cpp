@@ -1,5 +1,6 @@
 #include "TableView.h"
 #include "../Common/TableMess.h"
+#include "../Common/Algorithm/statistics.h"
 #include "../DB/DBPool.h"
 #include "Components/GenderDelegate.h"
 #include "Components/WeightDelegate.h"
@@ -91,6 +92,8 @@ TableView* TableView::getInstance()
     return INSTANCE;
 }
 
+//
+
 ZpSqlQueryModel* TableView::model()
 {
 
@@ -125,7 +128,7 @@ QVector<QStringList> TableView::getCurTableData()
     return tableData;
 }
 
-QVector<personData> TableView::getPersons()
+QMap<QString,personData> TableView::getPersons()
 {
     return m_persons;
 }
@@ -135,3 +138,130 @@ QVector<recordData> TableView::getRecords()
     return m_records;
 }
 
+bool TableView::isExistsPerson(QString personMess)
+{
+    QString split = "-";
+    int personCount = m_persons.count(personMess);
+    if(personCount==0){
+        return false;
+    }
+    return true;
+}
+
+void TableView::createPersons(QVector<QStringList> records)
+{
+    m_persons.clear();
+
+    for(int i=0; i<records.size(); i++){
+        QString split = "-";
+        QString name = records.at(i).at(2);
+        QString gender = records.at(i).at(3);
+        QString birthday = records.at(i).at(5);
+        QString weight = records.at(i).at(4);
+        QString personMess = name + split + gender+ split + birthday+ split + weight;
+        bool isExists = this->isExistsPerson(personMess);
+        qDebug() << isExists;
+        personData personData;
+        if(!isExists){
+            personData.name = name;
+            personData.gender = gender;
+            personData.birthday = birthday;
+            personData.weight = weight;
+            personData.level = records.at(i).at(6);
+            personData.team = records.at(i).at(7);
+            personData.stage = records.at(i).at(8);
+            personData.distance = records.at(i).at(11);
+            personData.env = records.at(i).at(12);
+        }
+        if(isExists){
+            personData = m_persons[personMess];
+        }
+        personData.strokeItemToValue[records.at(i).at(9)][records.at(i).at(10)].insert(0,records.at(i).at(13).toFloat());
+        personData.strokeItemToValue[records.at(i).at(9)][records.at(i).at(10)].insert(1,records.at(i).at(14).toFloat());
+        personData.strokeItemToValue[records.at(i).at(9)][records.at(i).at(10)].insert(2,records.at(i).at(15).toFloat());
+        m_persons[personMess] = personData;
+    }
+
+}
+void TableView::createRecord(QVector<QStringList> records)
+{
+    recordData recordData;
+
+
+
+    m_records.push_back(recordData);
+}
+
+void TableView::getCalculate()
+{
+    Statistics* statistics = Statistics::getInstance();
+    QVector<QStringList> records = this->getCurTableData();
+    for(int i=0; i<records.size();i++){
+
+            QString split = "-";
+            QString name = records.at(i).at(2);
+            QString gender = records.at(i).at(3);
+            QString birthday = records.at(i).at(5);
+            QString weight = records.at(i).at(4);
+            QString personMess = name + split + gender+ split + birthday+ split + weight;
+            QString stroke = records.at(i).at(9);
+            m_persons[personMess].strokeItemToValue[records.at(i).at(9)][records.at(i).at(10)].at(0);
+            QVector<double> vec = {records.at(i).at(13).toDouble(),records.at(i).at(14).toDouble(),records.at(i).at(15).toDouble()};
+            // 最大力
+            QString maxPower = statistics->getMaxPower(vec);
+            model()->setData(model()->index(i,16), maxPower);
+            // 相对力
+            QString relPower = statistics->getRelativePower(maxPower, weight);
+            model()->setData(model()->index(i,17), relPower);
+            // 百分比%
+            QString coordinateValue = statistics->getMaxPower(
+                        {m_persons[personMess].strokeItemToValue[stroke][percentageMap[stroke]].value(0),
+                         m_persons[personMess].strokeItemToValue[stroke][percentageMap[stroke]].value(1),
+                         m_persons[personMess].strokeItemToValue[stroke][percentageMap[stroke]].value(2)});
+            QString percentage = statistics->getPercentage(maxPower, coordinateValue);
+            model()->setData(model()->index(i,18), percentage);
+            // 贡献率%
+            QString leg = contributionRateMap[stroke].split("-").at(0);
+            QString hand = contributionRateMap[stroke].split("-").at(1);
+            QString legValue = statistics->getMaxPower(
+                        {m_persons[personMess].strokeItemToValue[stroke][leg].value(0),
+                         m_persons[personMess].strokeItemToValue[stroke][leg].value(1),
+                         m_persons[personMess].strokeItemToValue[stroke][leg].value(2)});
+            QString handValue = statistics->getMaxPower(
+                            {m_persons[personMess].strokeItemToValue[stroke][hand].value(0),
+                             m_persons[personMess].strokeItemToValue[stroke][hand].value(1),
+                             m_persons[personMess].strokeItemToValue[stroke][hand].value(2)});
+
+            QString contributeRate = statistics->getContribute(maxPower, legValue.toDouble() + handValue.toDouble());
+            model()->setData(model()->index(i,19), contributeRate);
+    }
+}
+
+int TableView::getPersonCount()
+{
+    return m_persons.count();
+}
+
+int TableView::getManCount()
+{
+    int personCount = m_persons.values().count();
+    int num=0;
+    for(int i=0;i<personCount;i++){
+        if(m_persons.values().at(i).gender == "男"){
+            num+=1;
+        }
+    }
+    return num;
+}
+
+int TableView::getWomanCount()
+{
+    int personCount = m_persons.values().count();
+    int num=0;
+    for(int i=0;i<personCount;i++){
+        if(m_persons.values().at(i).gender == "女"){
+            num+=1;
+        }
+    }
+    return num;
+}

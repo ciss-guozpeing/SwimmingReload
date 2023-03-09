@@ -19,16 +19,23 @@
 #include <QSqlRelationalDelegate>
 #include <QDataWidgetMapper>
 #include <QDateTime>
+#include <QtConcurrent>
 
 #include "../Common/CustomType.h"
 #include "Components/ZpSqlQueryModel.h"
 
+
+
+
 class TableView : public QTableView
 {
     Q_OBJECT
+    QMap<QString,QString> percentageMap{{"自由泳","自配合"},{"仰泳","仰配合"},{"蛙泳","蛙配合"},{"蝶泳","蝶配合"}};
+    QMap<QString,QString> contributionRateMap{{"自由泳","自腿-自手"},{"仰泳","仰腿-仰手"},{"蛙泳","蛙腿-蛙手"},{"蝶泳","蝶腿-蝶手"}};
+
     QItemSelectionModel* m_selectModel;
     ZpSqlQueryModel* m_zpSqlQueryModel;
-    QVector<personData> m_persons;
+    QMap<QString,personData> m_persons;
     QVector<recordData> m_records;
 
     bool isExistsPerson(QString name,QString gender, QString birthday,QString weight);
@@ -54,8 +61,20 @@ public:
 
     QVector<QStringList> getCurTableData();
 
-    QVector<personData> getPersons();
+    QMap<QString,personData> getPersons();
     QVector<recordData> getRecords();
+
+    bool isExistsPerson(QString personMess);
+
+    void createPersons(QVector<QStringList> records);
+    void createRecord(QVector<QStringList> records);
+
+
+    void getCalculate();
+
+    int getPersonCount();
+    int getWomanCount();
+    int getManCount();
 
 
 };

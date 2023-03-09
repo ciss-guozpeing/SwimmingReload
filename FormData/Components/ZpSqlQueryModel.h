@@ -23,6 +23,12 @@ class ZpSqlQueryModel: public QSqlQueryModel
     bool setMaxPower1(int id, QString value);
     bool setMaxPower2(int id, QString value);
     bool setMaxPower3(int id, QString value);
+    bool setMaxPower(int id, QString value);
+    bool setRelPower(int id, QString value);
+    bool setPercentage(int id, QString value);
+    bool setContributionRate(int id, QString value);
+    bool setClusterSerial(int id, QString value);
+    bool setScore(int id, QString value);
 
 public:
     ZpSqlQueryModel(QObject *parent = 0);
