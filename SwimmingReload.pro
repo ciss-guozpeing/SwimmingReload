@@ -22,6 +22,14 @@ OBJECTS_DIR     = $$PWD/Debug/temp/obj  #指定目标文件(obj)的存放目录
 #指定生成的应用程序放置的目录
 DESTDIR         = $$PWD/Debug/bin
 
+#临时文件存放位置
+MOC_DIR         = $$PWD/Release/temp/moc  #指定moc命令将含Q_OBJECT的头文件转换成标准.h文件的存放目录
+RCC_DIR         = $$PWD/Release/temp/rcc  #指定rcc命令将.qrc文件转换成qrc_*.h文件的存放目录
+UI_DIR          = $$PWD/Release/temp/ui   #指定rcc命令将.qrc文件转换成qrc_*.h文件的存放目录
+OBJECTS_DIR     = $$PWD/Release/temp/obj  #指定目标文件(obj)的存放目录
+
+#指定生成的应用程序放置的目录
+DESTDIR         = $$PWD/Release/bin
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0

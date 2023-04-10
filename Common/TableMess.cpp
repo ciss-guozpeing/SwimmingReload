@@ -11,7 +11,8 @@ TableMess::TableMess(QObject *parent)
         qDebug() << "win";
     #endif
     #ifdef Q_OS_MAC
-        fileName = fileName = QDir::currentPath() + "/../../../Config/config.ini";
+        fileName = fileName = QDir::currentPath() + "/Config/config.ini";
+        qDebug() << fileName;
     #endif
     #ifdef Q_OS_LINUX
         qDebug()<<"linux";
