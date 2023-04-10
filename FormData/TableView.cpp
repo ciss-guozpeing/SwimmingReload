@@ -1,6 +1,7 @@
 #include "TableView.h"
 #include "../Common/TableMess.h"
 #include "../Common/Algorithm/statistics.h"
+#include "../Common/Algorithm/Score.h"
 #include "../DB/DBPool.h"
 #include "Components/GenderDelegate.h"
 #include "Components/WeightDelegate.h"
@@ -195,45 +196,49 @@ void TableView::createRecord(QVector<QStringList> records)
 void TableView::getCalculate()
 {
     Statistics* statistics = Statistics::getInstance();
+    Score* score = Score::getInstance();
     QVector<QStringList> records = this->getCurTableData();
     for(int i=0; i<records.size();i++){
+        QString split = "-";
+        QString name = records.at(i).at(2);
+        QString gender = records.at(i).at(3);
+        QString birthday = records.at(i).at(5);
+        QString weight = records.at(i).at(4);
+        QString personMess = name + split + gender+ split + birthday+ split + weight;
+        QString stroke = records.at(i).at(9);
+        QString strokeItem = records.at(i).at(10);
+        m_persons[personMess].strokeItemToValue[records.at(i).at(9)][records.at(i).at(10)].at(0);
+        QVector<double> vec = {records.at(i).at(13).toDouble(),records.at(i).at(14).toDouble(),records.at(i).at(15).toDouble()};
+        // 最大力
+        QString maxPower = statistics->getMaxPower(vec);
+        model()->setData(model()->index(i,16), maxPower);
+        // 相对力
+        QString relPower = statistics->getRelativePower(maxPower, weight);
+        model()->setData(model()->index(i,17), relPower);
+        // 百分比%
+        QString coordinateValue = statistics->getMaxPower(
+                    {m_persons[personMess].strokeItemToValue[stroke][percentageMap[stroke]].value(0),
+                     m_persons[personMess].strokeItemToValue[stroke][percentageMap[stroke]].value(1),
+                     m_persons[personMess].strokeItemToValue[stroke][percentageMap[stroke]].value(2)});
+        QString percentage = statistics->getPercentage(maxPower, coordinateValue);
+        model()->setData(model()->index(i,18), percentage);
+        // 贡献率%
+        QString leg = contributionRateMap[stroke].split("-").at(0);
+        QString hand = contributionRateMap[stroke].split("-").at(1);
+        QString legValue = statistics->getMaxPower(
+                    {m_persons[personMess].strokeItemToValue[stroke][leg].value(0),
+                     m_persons[personMess].strokeItemToValue[stroke][leg].value(1),
+                     m_persons[personMess].strokeItemToValue[stroke][leg].value(2)});
+        QString handValue = statistics->getMaxPower(
+                        {m_persons[personMess].strokeItemToValue[stroke][hand].value(0),
+                         m_persons[personMess].strokeItemToValue[stroke][hand].value(1),
+                         m_persons[personMess].strokeItemToValue[stroke][hand].value(2)});
 
-            QString split = "-";
-            QString name = records.at(i).at(2);
-            QString gender = records.at(i).at(3);
-            QString birthday = records.at(i).at(5);
-            QString weight = records.at(i).at(4);
-            QString personMess = name + split + gender+ split + birthday+ split + weight;
-            QString stroke = records.at(i).at(9);
-            m_persons[personMess].strokeItemToValue[records.at(i).at(9)][records.at(i).at(10)].at(0);
-            QVector<double> vec = {records.at(i).at(13).toDouble(),records.at(i).at(14).toDouble(),records.at(i).at(15).toDouble()};
-            // 最大力
-            QString maxPower = statistics->getMaxPower(vec);
-            model()->setData(model()->index(i,16), maxPower);
-            // 相对力
-            QString relPower = statistics->getRelativePower(maxPower, weight);
-            model()->setData(model()->index(i,17), relPower);
-            // 百分比%
-            QString coordinateValue = statistics->getMaxPower(
-                        {m_persons[personMess].strokeItemToValue[stroke][percentageMap[stroke]].value(0),
-                         m_persons[personMess].strokeItemToValue[stroke][percentageMap[stroke]].value(1),
-                         m_persons[personMess].strokeItemToValue[stroke][percentageMap[stroke]].value(2)});
-            QString percentage = statistics->getPercentage(maxPower, coordinateValue);
-            model()->setData(model()->index(i,18), percentage);
-            // 贡献率%
-            QString leg = contributionRateMap[stroke].split("-").at(0);
-            QString hand = contributionRateMap[stroke].split("-").at(1);
-            QString legValue = statistics->getMaxPower(
-                        {m_persons[personMess].strokeItemToValue[stroke][leg].value(0),
-                         m_persons[personMess].strokeItemToValue[stroke][leg].value(1),
-                         m_persons[personMess].strokeItemToValue[stroke][leg].value(2)});
-            QString handValue = statistics->getMaxPower(
-                            {m_persons[personMess].strokeItemToValue[stroke][hand].value(0),
-                             m_persons[personMess].strokeItemToValue[stroke][hand].value(1),
-                             m_persons[personMess].strokeItemToValue[stroke][hand].value(2)});
-
-            QString contributeRate = statistics->getContribute(maxPower, legValue.toDouble() + handValue.toDouble());
-            model()->setData(model()->index(i,19), contributeRate);
+        QString contributeRate = statistics->getContribute(maxPower, legValue.toDouble() + handValue.toDouble());
+        model()->setData(model()->index(i,19), contributeRate);
+        // 评分
+        QString scoreValue  = score->getCommonScore(gender, stroke, strokeItem, maxPower);
+        model()->setData(model()->index(i,20), scoreValue);
     }
 }
 

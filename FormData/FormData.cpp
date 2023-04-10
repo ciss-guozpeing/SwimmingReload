@@ -237,7 +237,7 @@ void FormData::on_resetStrokeItem(QString stroke)
         ui->strokeItem->addItems({"请选择"});
     } else {
         TableMess* tableMess= TableMess::getInstance();
-        ui->strokeItem->addItems(tableMess->getStrokeIItem()[stroke]);
+        ui->strokeItem->addItems(tableMess->getStrokeIItem().value(stroke));
     }
 }
 
@@ -262,9 +262,8 @@ void FormData::on_scoreFormBtn_clicked()
     if(filePath!=""){
         Score* score = new Score;
         ui->scorePath->setText(filePath);
+        score->openScoreForm(filePath);
 //        score->setScoreCommonStandard();
-
-
     } else {
 
     }

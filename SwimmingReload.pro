@@ -9,6 +9,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 
+
 ####### 软件生成目录 #########
 TARGET = "国家队水中力量测评平台"
 TEMPLATE = app
